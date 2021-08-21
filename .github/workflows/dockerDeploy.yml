@@ -1,13 +1,21 @@
-- name: Login to docker hub
-  uses: actions-hub/docker/login@master
-  env:
-    DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+name: Build and Deploy the image to DockerHub
+on:
+  push:
+    branches:
+      - master
 
-- name: Build :latest
-  run: docker build -t ${{ secrets.DOCKER_USERNAME }}/climate-change-frontend:latest .
+jobs:
+  build:
+    name: Build and Deploy image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-- name: Push to docker hub :latest
-  uses: actions-hub/docker@master
-  with:
-    args: push ${GITHUB_REPOSITORY}:latest
+      - name: Build and push image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ secrets.DOCKER_USERNAME }}/climate-change-frontend
+          tags: latest
