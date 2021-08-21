@@ -1,26 +1,13 @@
-name: Docker registry
+- name: Login to docker hub
+  uses: actions-hub/docker/login@master
+  env:
+    DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+    DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
-on: [push]
+- name: Build :latest
+  run: docker build -t ${{ secrets.DOCKER_USERNAME }}/climate-change-frontend:latest .
 
-jobs:
-  github:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-
-      - name: Login to github registry
-        uses: actions-hub/docker/login@master
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_REGISTRY_URL: docker.pkg.github.com
-
-      - name: Build :latest
-        if: success()
-        run: docker build -t docker.pkg.github.com/frontendserver/app:latest .
-
-      - name: Push to docker hub :latest
-        if: success()
-        uses: actions-hub/docker@master
-        with:
-          args: push docker.pkg.github.com/frontendserver:latest
+- name: Push to docker hub :latest
+  uses: actions-hub/docker@master
+  with:
+    args: push ${GITHUB_REPOSITORY}:latest
