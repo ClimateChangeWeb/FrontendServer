@@ -1,0 +1,5 @@
+---
+applications:
+  - name: climateChange-frontend
+    random-route: true
+    memory: 256M
