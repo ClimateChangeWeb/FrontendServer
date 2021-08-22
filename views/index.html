@@ -33,12 +33,26 @@
       rel="stylesheet"
       media="screen,projection"
     />
+
+    <!-- leafletjs -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+      integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+      crossorigin=""
+    />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
   </head>
   <body>
     <nav class="blue accent-1">
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo" style="margin-left: 20px"
-          >Be Aware Of Climate Changes</a
+          >Be Aware of Climate Changes</a
         >
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"
           ><i class="material-icons">menu</i></a
@@ -48,7 +62,9 @@
           <li><a href="#">Donation</a></li>
           <li><a href="#">Admin Login</a></li>
           <li><a href="#">Sign Up</a></li>
-          <li><a class="waves-effect waves-light btn">Log In</a></li>
+          <li>
+            <a class="waves-effect waves-light btn" href="/login">Log In</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -58,9 +74,231 @@
       <li><a href="#">Donation</a></li>
       <li><a href="#">Admin Login</a></li>
       <li><a href="#">Sign Up</a></li>
-      <li><a class="waves-effect waves-light btn">Log In</a></li>
+      <li><a class="waves-effect waves-light btn" href="/login">Log In</a></li>
     </ul>
-    <main></main>
+    <main>
+      <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+          <div class="container">
+            <br /><br />
+            <h1 class="header center deep-purple-text text-accent-3">
+              Climate Changes
+            </h1>
+            <div class="row center">
+              <h5 class="header col s12 light">
+                A Website tell you about the Climate changes
+              </h5>
+            </div>
+            <div class="row center">
+              <a
+                href="#whatIsClimateChanges"
+                id="download-button"
+                class="btn-large waves-effect waves-light teal lighten-1"
+                >Start now</a
+              >
+            </div>
+            <br /><br />
+          </div>
+        </div>
+        <div class="parallax">
+          <img src="asset/climate.jpg" />
+        </div>
+      </div>
+      <!-- resources from nasa https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html -->
+      <div class="row">
+        <div class="col offset-l1">
+          <div class="row">
+            <a name="whatIsClimateChanges"></a>
+            <div class="col l3 offset-l1 s5 offset-s1">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img
+                    class="activator"
+                    src="asset/edu_what_is_climate_change_desert.jpg"
+                  />
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    >What is Climate changes? (click image to see more info)<i
+                      class="material-icons right"
+                      >more_vert</i
+                    ></span
+                  >
+                  <p>
+                    <a
+                      href="https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html"
+                      target="_blank"
+                      >Checkout more here
+                      <i class="material-icons tiny">open_in_new</i></a
+                    >
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Climate changes
+                    <i class="material-icons right">close</i></span
+                  >
+                  <p>
+                    Climate change is a change in the usual weather found in a
+                    place. This could be a change in how much rain a place
+                    usually gets in a year. Or it could be a change in a place's
+                    usual temperature for a month or season.
+                  </p>
+                  <p>
+                    Climate change is also a change in Earth's climate. This
+                    could be a change in Earth's usual temperature. Or it could
+                    be a change in where rain and snow usually fall on Earth.
+                  </p>
+                  <p>
+                    Weather can change in just a few hours. Climate takes
+                    hundreds or even millions of years to change.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col l3 s5" name="whatIsClimateChanges">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img
+                    class="activator"
+                    src="asset/edu_what_is_climate_change_desert.jpg"
+                  />
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    >What Is Causing Earth's Climate to Change? (click image to
+                    see more info)<i class="material-icons right"
+                      >more_vert</i
+                    ></span
+                  >
+                  <p>
+                    <a
+                      href="https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html"
+                      target="_blank"
+                      >Checkout more here
+
+                      <i class="material-icons tiny">open_in_new</i>
+                    </a>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >Things Causing Climate Change<i
+                      class="material-icons right"
+                      >close</i
+                    ></span
+                  >
+                  <p>
+                    Many things can cause climate to change all on its own.
+                    Earth's distance from the sun can change. The sun can send
+                    out more or less energy. Oceans can change. When a volcano
+                    erupts, it can change our climate.
+                  </p>
+                  <p>
+                    Most scientists say that humans can change climate too.
+                    People drive cars. People heat and cool their houses. People
+                    cook food. All those things take energy. One way we get
+                    energy is by burning coal, oil and gas. Burning these things
+                    puts gases into the air. The gases cause the air to heat up.
+                    This can change the climate of a place. It also can change
+                    Earth's climate.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col l3 s5 offset-s1" name="whatIsClimateChanges">
+              <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                  <img
+                    class="activator"
+                    src="asset/edu_what_is_climate_change_desert.jpg"
+                  />
+                </div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4"
+                    >What Might Happen to Earth's Climate and What Can You Do.
+                    (click image to see more info)<i
+                      class="material-icons right"
+                      >more_vert</i
+                    ></span
+                  >
+                  <p>
+                    <a
+                      href="https://www.nasa.gov/audience/forstudents/k-4/stories/nasa-knows/what-is-climate-change-k4.html"
+                      target="_blank"
+                      >Checkout more here
+
+                      <i class="material-icons tiny">open_in_new</i>
+                    </a>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4"
+                    >You Can Help!<i class="material-icons right"
+                      >close</i
+                    ></span
+                  >
+                  <p>
+                    Scientists think that Earth's temperature will keep going up
+                    for the next 100 years. This would cause more snow and ice
+                    to melt. Oceans would rise higher. Some places would get
+                    hotter. Other places might have colder winters with more
+                    snow. Some places might get more rain. Other places might
+                    get less rain. Some places might have stronger hurricanes.
+                  </p>
+                  <p>
+                    Scientists think we can do things to stop the climate from
+                    changing as much. You can help by using less energy and
+                    water. Turn off lights and TVs when you leave a room. Turn
+                    off the water when brushing your teeth. You also can help by
+                    planting trees.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col offset-s2 s8 warning-header-div">
+          <div class="row">
+            <div class="col offset-l1 l10">
+              <h2>
+                Extreme weather is increasing every single year, here is the
+                news and the warning from Australia government.
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s10 offset-s1 l5 offset-l1" id="discover-div">
+          <div class="row">
+            <div class="col s10 offset-s1">
+              <ul class="collection with-header" id="discover-collection">
+                <li class="collection-header"><h4>Discovers</h4></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col s10 offset-s1 l5" id="warning-div">
+          <div class="row">
+            <div class="col s10 offset-s1">
+              <ul class="collection with-header" id="warning-collection">
+                <li class="collection-header"><h4>Warnings</h4></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col offset-s1 s10 weather-box"></div>
+      </div>
+
+      <!-- map place -->
+      <div id="mapid"></div>
+    </main>
 
     <footer class="page-footer blue accent-1">
       <div class="container">
