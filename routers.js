@@ -31,6 +31,7 @@ router.post('/login', (req, res, next) => {
      * should also do in front end
      */
     if (!user) {
+      console.log(`info is ${info}`);
       res.status(400).send(info);
     }
     /**
@@ -41,7 +42,7 @@ router.post('/login', (req, res, next) => {
         return next(err);
       }
       // back to homepage
-      return res.status(200).redirect('/');
+      return res.status(200).send(user);
     });
   })(req, res, next);
 });
