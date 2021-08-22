@@ -1,17 +1,36 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routers');
-
+const socket = require('./sockets');
+const passport = require('passport');
+const expressSession = require('express-session')({
+  secret: process.env.SESSION_SECRET || 'secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 60000 }, //1 hour
+});
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// parse application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+const httpServer = require('http').createServer(app);
+const io = require('socket.io')(httpServer);
+
+socket.openSocket(io);
 
 // parse application/json
 app.use(express.json());
+
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
+//store section
+app.use(expressSession);
+
+// Configure passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(__dirname + '/views'));
 
@@ -31,6 +50,18 @@ db.once('open', function () {
 //get routes
 app.use(routes);
 
-app.listen(PORT, () => {
+//error handler middleware
+app.use(function (err, req, res, next) {
+  //can send error message to the front end but stay in the signup endpoint
+  res.status(err.status || 500).send(err.message);
+  //need a view engine
+  // res.render('error', {
+  //   message: err.message,
+  //   error: {},
+  // });
+  console.log(`error message is ${err.message}`);
+});
+
+httpServer.listen(PORT, () => {
   console.log(`Server start at PORT ${PORT}`);
 });
