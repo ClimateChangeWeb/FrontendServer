@@ -4,6 +4,17 @@ const passport = require('passport');
 const path = require('path');
 const signupFunc = require('./controllers/signup');
 const connectEnsureLogin = require('connect-ensure-login');
+const morgan = require('morgan');
+var fs = require('fs');
+
+var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
+  flags: 'a',
+});
+router.use(morgan('combined', { stream: accessLogStream }));
+router.use(morgan('tiny'));
+morgan.token('host', function (req, res) {
+  return req.hostname;
+});
 
 //login endpoint
 router.post('/login', (req, res, next) => {

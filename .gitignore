@@ -10,3 +10,6 @@ node_modules/
 
 # for rest client
 *.http
+
+# for vscode live server
+.vscode
