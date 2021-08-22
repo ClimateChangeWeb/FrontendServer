@@ -53,7 +53,7 @@ app.use(routes);
 //error handler middleware
 app.use(function (err, req, res, next) {
   //can send error message to the front end but stay in the signup endpoint
-  res.status(err.status || 500).send(err.message);
+  res.status(err.status || 500);
   //need a view engine
   // res.render('error', {
   //   message: err.message,

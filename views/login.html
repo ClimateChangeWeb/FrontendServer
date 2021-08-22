@@ -4,9 +4,116 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Frontend</title>
+    <!-- google fonts  -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- jquery -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="js/login.js"></script>
+    <link
+      href="css/login.css"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
   </head>
   <body>
-    <h1>login</h1>
+    <nav class="blue accent-1">
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo" style="margin-left: 20px">Login</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">Charity</a></li>
+          <li><a href="#">Donation</a></li>
+          <li><a href="#">Admin Login</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a class="waves-effect waves-light btn">Log In</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav blue accent-1" id="mobile-demo">
+      <li><a href="#">Charity</a></li>
+      <li><a href="#">Donation</a></li>
+      <li><a href="#">Admin Login</a></li>
+      <li><a href="#">Sign Up</a></li>
+    </ul>
+    <main>
+      <center>
+        <img src="asset/login.jpg" alt="login" width="300" height="300" />
+        <h3>Login</h3>
+      </center>
+
+      <div class="row">
+        <div class="input-field col s10 offset-s1 l6 offset-l3">
+          <input value="" id="username" type="text" class="validate" />
+          <label class="active" for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1 l6 offset-l3">
+          <input value="" id="password" type="text" class="validate" />
+          <label class="active" for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <button
+          class="btn waves-effect waves-light col s10 offset-s1 l6 offset-l3"
+          id="loginBtn"
+          type="submit"
+          name="action"
+        >
+          Login
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </main>
+
+    <footer class="page-footer blue accent-1">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Climate Change Website</h5>
+            <p class="grey-text text-lighten-4">
+              This Project is produced for my learning
+            </p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Links</h5>
+            <ul>
+              <li>
+                <a class="grey-text text-lighten-3" href="#!">About Me</a>
+              </li>
+              <li><a class="grey-text text-lighten-3" href="#!">Email</a></li>
+              <li>
+                <a class="grey-text text-lighten-3" href="#!">Special thanks</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">© 2021 Copyright</div>
+      </div>
+    </footer>
   </body>
 </html>
