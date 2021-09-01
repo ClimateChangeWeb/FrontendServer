@@ -8,7 +8,7 @@ $(document).ready(function () {
     function (data, textStatus, jqXHR) {
       // success callback
       console.log(data);
-    }
+    },
   );
 
   // get discovers news
@@ -31,7 +31,7 @@ $(document).ready(function () {
     // success callback
     console.log(data);
     $('.weather-box').append(
-      `<p>Max temp is ${data.main.temp_max} Kelvin, and the Min temp is ${data.main.temp_min} Kelvin</p>`
+      `<p>Max temp is ${data.main.temp_max} Kelvin, and the Min temp is ${data.main.temp_min} Kelvin</p>`,
     );
   });
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
       id: 'mapbox/streets-v11',
       tileSize: 512,
       zoomOffset: -1,
-    }
+    },
   ).addTo(mymap);
 });
 
@@ -73,7 +73,7 @@ const mapWarnings = (warnings) => {
   warnings.forEach((warning) => {
     warning.items.forEach((element) => {
       $('#warning-collection').append(
-        `<li class="collection-item">${element.title}</li>`
+        `<li class="collection-item">${element.title}</li>`,
       );
     });
   });

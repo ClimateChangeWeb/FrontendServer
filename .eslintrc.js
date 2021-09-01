@@ -4,10 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends:{
-    'eslint:recommended',
-    'jquery'
-  } 
+  extends: ['eslint:recommended', 'jquery'],
   parserOptions: {
     ecmaVersion: 12,
   },
