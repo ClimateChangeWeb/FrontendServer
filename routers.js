@@ -38,7 +38,7 @@ router.post('/login', (req, res, next) => {
     /**
      * login
      */
-    req.login(user, (err) => {
+    req.login(user, err => {
       if (err) {
         return next(err);
       }
