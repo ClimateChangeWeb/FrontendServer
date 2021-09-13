@@ -2,6 +2,7 @@ $(document).ready(function () {
   //init side bar
   $('.sidenav').sidenav();
   $('.parallax').parallax();
+  $('.tabs').tabs();
 
   $.get(
     '/user', // url

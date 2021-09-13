@@ -62,7 +62,7 @@
       </div>
     </nav>
 
-    <ul class="sidenav blue accent-1" id="mobile-demo">
+    <ul class="sidenav blue accent-1" id="sidebar">
       <li><a href="#">Charity</a></li>
       <li><a href="#">Donation</a></li>
       <li><a href="#">Admin Login</a></li>
@@ -70,8 +70,18 @@
       <li><a class="waves-effect waves-light btn">Log In</a></li>
     </ul>
     <main>
+      <ul id="discover-tabs" class="tabs tabs-fixed-width z-depth-1">
+        <li class="tab col s3"><a href="#discover-tab">Discover News</a></li>
+        <li class="tab col s3">
+          <a href="#warning-tab">Climate Warnings</a>
+        </li>
+        <li class="tab col s3"><a href="#mapid">Climate Map</a></li>
+        <li class="tab col s3">
+          <a href="#weather-forecast">Weather Forecast</a>
+        </li>
+      </ul>
       <!-- discover -->
-      <div class="row">
+      <div class="row" id="discover-tab">
         <div class="col s10 offset-s1 l5 offset-l1" id="discover-div">
           <div class="row">
             <div class="col s10 offset-s1">
@@ -81,8 +91,10 @@
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- warning -->
+      <!-- warning -->
+      <div class="row" id="warning-tab">
         <div class="col s10 offset-s1 l5" id="warning-div">
           <div class="row">
             <div class="col s10 offset-s1">
@@ -95,8 +107,8 @@
       </div>
 
       <!-- weather forecast -->
-      <div class="row">
-        <div class="col offset-s1 s10 weather-box"></div>
+      <div class="row" id="weather-forecast">
+        <div class="col offset-s1 s10 weather-box">a</div>
       </div>
 
       <!-- map place -->
