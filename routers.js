@@ -137,4 +137,9 @@ router.get('/weather', (req, res) => {
       console.log(error);
     });
 });
+
+// discover page
+router.get('/discover', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/discover.html'));
+});
 module.exports = router;

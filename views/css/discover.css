@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+#warning-div {
+  background-color: #e3f2fd;
+  border-radius: 10ch;
+}
+
+#discover-div {
+  background-color: #e3f2fd;
+  border-radius: 10ch;
+}
+
+#mapid {
+  height: 180px;
+}
