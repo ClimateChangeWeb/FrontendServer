@@ -15,6 +15,7 @@ const userSchema = new Schema({
     required: true,
     validate: [validateEmail, 'Please fill a valid email address'],
   },
+  city: String,
 });
 
 //plugin the password mongoose
