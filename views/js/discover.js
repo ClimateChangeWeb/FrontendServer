@@ -1,8 +1,6 @@
 $(document).ready(function () {
-  //init side bar
-  $('.sidenav').sidenav();
-  $('.parallax').parallax();
-  $('.tabs').tabs();
+  //init
+  M.AutoInit();
 
   $.get(
     '/user', // url
@@ -57,15 +55,17 @@ $(document).ready(function () {
 
 const mapDiscover = (discovers) => {
   discovers.forEach((element) => {
-    $('#discover-collection')
-      .append(`<li class="collection-item">${element.title}</li>
+    $('#discover-list').append(` <li class="item">
+      <h4 class="headline">
       <a
-      href="${element.url}"
-      target="_blank"
-      >Go to Article
-  
-      <i class="material-icons tiny">open_in_new</i>
-    </a`);
+        href="${element.url}"
+        target="_blank"
+        >Checkout more here
+      ${element.title}
+        <i class="material-icons tiny">open_in_new</i>
+      </a>
+      </h4>      
+    </li>`);
   });
 };
 
