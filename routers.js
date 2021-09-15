@@ -137,4 +137,31 @@ router.get('/weather', (req, res) => {
       console.log(error);
     });
 });
+
+// get the charities URL
+const charitiesURL =
+  'https://us-south.functions.appdomain.cloud/api/v1/web/21aa5286-66d7-41a8-b547-3e067029a6bc/default/getCharities';
+router.get('/charities', (req, res) => {
+  axios
+    .get(charitiesURL)
+    .then(function (response) {
+      // handle success
+      console.log(`charity response: ${response.data.result}`);
+      res.json(response.data.result);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    });
+});
+
+// discover page
+router.get('/discover', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/discover.html'));
+});
+
+// charity page
+router.get('/charity', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/charity.html'));
+});
 module.exports = router;

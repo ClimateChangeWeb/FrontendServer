@@ -1,6 +1,7 @@
 $(document).ready(function () {
-  //init side bar
-  $('.sidenav').sidenav();
+  //init
+  M.AutoInit();
+
   $('#loginBtn').click(() => {
     console.log('login button clicked');
 

@@ -21,7 +21,7 @@ const signup = (req, res, next) => {
       }
       console.log('user registered');
       res.redirect('/login');
-    }
+    },
   );
 };
 
