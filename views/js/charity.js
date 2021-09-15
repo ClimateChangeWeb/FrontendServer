@@ -1,9 +1,4 @@
 $(document).ready(function () {
-  //init side bar
-  $('.sidenav').sidenav();
-  $('.parallax').parallax();
-  $('.tabs').tabs();
-
   $.get('/charities', function (data, textStatus, jqXHR) {
     // success callback
     console.log(data);
@@ -24,7 +19,7 @@ const insertCharities = (charities) => {
                 <div class="card-action">
                     <a href="${charity.url}" target="_blank">${charity.name} <i class="material-icons tiny">open_in_new</i></a>
                 </div>
-            </div>`,
+        </div>`,
     );
   });
 };

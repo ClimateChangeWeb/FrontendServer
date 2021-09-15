@@ -152,7 +152,6 @@ router.get('/charities', (req, res) => {
     .catch(function (error) {
       // handle error
       console.log(error);
-      a;
     });
 });
 
