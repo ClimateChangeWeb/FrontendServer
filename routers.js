@@ -151,12 +151,18 @@ router.get('/charities', (req, res) => {
     })
     .catch(function (error) {
       // handle error
-      console.log(error);a
+      console.log(error);
+      a;
     });
 });
 
 // discover page
 router.get('/discover', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/discover.html'));
+});
+
+// charity page
+router.get('/charity', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/charity.html'));
 });
 module.exports = router;
