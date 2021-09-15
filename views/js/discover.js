@@ -72,6 +72,7 @@ const mapDiscover = (discovers) => {
 //map the warnings for australia climate
 const mapWarnings = (warnings) => {
   warnings.forEach((warning) => {
+    // get the different parent div for the warnings
     let divID = warning.link.slice(-7).slice(0, 2);
     $('#warning-list').append(`
     <div id="${divID}">
@@ -79,6 +80,7 @@ const mapWarnings = (warnings) => {
               </div>
     `);
 
+    // list warnings
     warning.items.forEach((element) => {
       $(`#${divID}`).append(
         `  <ul class="custom-list">
