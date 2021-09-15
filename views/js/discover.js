@@ -1,3 +1,41 @@
+const hotIcon = `<div class="hot weather-icon">
+<span class="sun"></span>
+<span class="sunx"></span>
+</div>`;
+
+const cloudyIcon = `<div class="cloudy weather-icon">
+<span class="cloud"></span>
+<span class="cloudx"></span>
+</div>`;
+
+const stormyIcon = `<div class="stormy weather-icon">
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<span class="snowe"></span>
+<span class="snowex"></span>
+<span class="stick"></span>
+<span class="stick2"></span>
+</div>`;
+
+const breezyIcon = `<div class="breezy weather-icon">
+<ul>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<span class="cloudr"></span>
+</div>`;
+
 $(document).ready(function () {
   //init
   M.AutoInit();
