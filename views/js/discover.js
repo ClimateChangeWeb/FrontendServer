@@ -72,9 +72,21 @@ const mapDiscover = (discovers) => {
 //map the warnings for australia climate
 const mapWarnings = (warnings) => {
   warnings.forEach((warning) => {
+    let divID = warning.link.slice(-7).slice(0, 2);
+    $('#warning-list').append(`
+    <div id="${divID}">
+                <p class="warning-header">${warning.title}</p>
+              </div>
+    `);
+
     warning.items.forEach((element) => {
-      $('#warning-collection').append(
-        `<li class="collection-item">${element.title}</li>`,
+      $(`#${divID}`).append(
+        `  <ul class="custom-list">
+        <li class="warning-content">
+          <i class="material-icons tiny">warning</i>
+          ${element.title}
+        </li>
+      </ul>`,
       );
     });
   });
