@@ -162,20 +162,30 @@ $(document).ready(function () {
   //map init
   //TODO:
   // to use this map display climate
-  var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
-  L.tileLayer(
-    'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw',
-    {
-      maxZoom: 18,
-      attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-    },
-  ).addTo(mymap);
+  var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution:
+      'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  });
+  var clouds = L.OWM.clouds({
+    showLegend: false,
+    opacity: 0.5,
+    appId: '54adf57bbc67acd54ea5288d3964f297',
+  });
+  var temp = L.OWM.temperature({
+    appId: '54adf57bbc67acd54ea5288d3964f297',
+  });
+
+  var map = L.map('mapid', {
+    center: new L.LatLng(-25.274398, 133.775136),
+    zoom: 3.5,
+    layers: [osm],
+  });
+  var baseMaps = { 'OSM Standard': osm };
+  var overlayMaps = { Clouds: clouds, Temp: temp };
+  var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
 });
 
 const appendElement = (element, appendItem) => {
