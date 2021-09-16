@@ -155,11 +155,6 @@ router.get('/charities', (req, res) => {
     });
 });
 
-// home page
-router.get('/home', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/index.html'));
-});
-
 // discover page
 router.get('/discover', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/discover.html'));
