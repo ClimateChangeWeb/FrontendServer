@@ -22,7 +22,7 @@ L.OWM = L.TileLayer.extend({
     L.Util.setOptions(this, options);
     var tileurl = this.options.baseUrl.replace(
       '{layername}',
-      this._owmLayerName
+      this._owmLayerName,
     );
     tileurl = tileurl + '?appid=' + this.options.appId;
 
@@ -38,7 +38,7 @@ L.OWM = L.TileLayer.extend({
     if (this.options.showLegend && this.options.legendImagePath != null) {
       this._legendControl = this._getLegendControl();
       this._legendId = this._legendControl.addLegend(
-        this.options.legendImagePath
+        this.options.legendImagePath,
       );
     }
     L.TileLayer.prototype.onAdd.call(this, map);
@@ -404,7 +404,7 @@ L.OWM.Current = L.Layer.extend({
         bounds.getWest(),
         bounds.getSouth(),
         bounds.getEast(),
-        bounds.getNorth()
+        bounds.getNorth(),
       );
     }
     if (data !== null) {
@@ -416,7 +416,7 @@ L.OWM.Current = L.Layer.extend({
       var url = this._urlTemplate
         .replace(
           '{appId}',
-          this.options.appId ? 'APPID=' + this.options.appId + '&' : ''
+          this.options.appId ? 'APPID=' + this.options.appId + '&' : '',
         )
         .replace('{type}', this.options.type)
         .replace('{minlon}', bounds.getWest())
@@ -438,10 +438,10 @@ L.OWM.Current = L.Layer.extend({
           }
           _this._processRequestedData(
             _this,
-            typeof data.list == 'undefined' ? new Array() : data.list
+            typeof data.list == 'undefined' ? new Array() : data.list,
           );
           _this.fire('owmloadingend', { type: _this.options.type });
-        }
+        },
       );
     }
     if (this.options.interval && this.options.interval > 0) {
@@ -462,7 +462,7 @@ L.OWM.Current = L.Layer.extend({
       }
       // only use cities having a minimum distance of some pixels on the map
       var pt = _this._map.latLngToLayerPoint(
-        new L.LatLng(stat.coord.Lat, stat.coord.Lon)
+        new L.LatLng(stat.coord.Lat, stat.coord.Lon),
       );
       var key =
         '' +
@@ -508,7 +508,7 @@ L.OWM.Current = L.Layer.extend({
           typeof _this.options.popupFunction == 'function'
         ) {
           marker.bindPopup(
-            _this.options.popupFunction.call(_this, stations[key])
+            _this.options.popupFunction.call(_this, stations[key]),
           );
         } else {
           marker.bindPopup(_this._createPopup(stations[key]));
@@ -578,7 +578,7 @@ L.OWM.Current = L.Layer.extend({
           '<div class="owm-popup-description">' +
           this.i18n(
             'id' + station.weather[0].id,
-            station.weather[0].description + ' (' + station.weather[0].id + ')'
+            station.weather[0].description + ' (' + station.weather[0].id + ')',
           ) +
           '</div>';
       }
@@ -764,7 +764,7 @@ L.OWM.Current = L.Layer.extend({
         station,
         imageData.url,
         imageData.width,
-        imageData.height
+        imageData.height,
       ),
     });
     var marker = L.marker([station.coord.Lat, station.coord.Lon], {
