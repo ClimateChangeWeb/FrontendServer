@@ -81,13 +81,16 @@
     </ul>
     <main>
       <ul id="discover-tabs" class="tabs tabs-fixed-width z-depth-1">
-        <li class="tab col s3"><a href="#discover-tab">Discover News</a></li>
-        <li class="tab col s3">
+        <li class="tab"><a href="#discover-tab">Discover News</a></li>
+        <li class="tab">
           <a href="#warning-tab">Climate Warnings</a>
         </li>
-        <li class="tab col s3"><a href="#mapid">Climate Map</a></li>
-        <li class="tab col s3">
+        <li class="tab">
           <a href="#weather-tab" class="active">Current Weather</a>
+        </li>
+        <li class="tab"><a href="#mapid">Climate Map</a></li>
+        <li class="tab">
+          <a href="#weather-forecast-div">Weather Forecast</a>
         </li>
       </ul>
       <!-- discover -->
@@ -277,6 +280,32 @@
           </ul>
         </div>
       </div>
+      <!-- weather forecast widget from open weather -->
+      <div class="row">
+        <div id="weather-forecast-div" class="col offset-s4"></div>
+      </div>
+      <script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script>
+      <script>
+        window.myWidgetParam
+          ? window.myWidgetParam
+          : (window.myWidgetParam = []);
+        window.myWidgetParam.push({
+          id: 11,
+          cityid: '2158177',
+          appid: '54adf57bbc67acd54ea5288d3964f297',
+          units: 'metric',
+          containerid: 'weather-forecast-div',
+        });
+        (function () {
+          var script = document.createElement('script');
+          script.async = true;
+          script.charset = 'utf-8';
+          script.src =
+            '//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(script, s);
+        })();
+      </script>
     </main>
 
     <!-- footer -->

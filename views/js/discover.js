@@ -67,9 +67,39 @@ $(document).ready(function () {
   $.get('/weather', function (data, textStatus, jqXHR) {
     // success callback
     console.log(data);
-    $('.weather-box').append(
-      `<p>Max temp is ${data.main.temp_max} Kelvin, and the Min temp is ${data.main.temp_min} Kelvin</p>`,
-    );
+    // for detail
+    changeElement('.currentTemp-detail > span', data.main.temp + '&deg;');
+    changeElement('.maxTemp-detail > span', data.main.temp_max + '&deg;');
+    changeElement('.minTemp-detail > span', data.main.temp_min + '&deg;');
+    changeElement('.humanFeel-detail > span', data.main.feels_like + '&deg;');
+    changeElement('.pressure-detail >span', data.main.pressure + 'hPa');
+    changeElement('.humidity-detail', data.main.humidity + '%');
+    changeElement('.wind-detail > span', data.wind.speed + 'meter/sec');
+
+    // // for widget
+    changeElement('.temp', `${data.main.temp}&deg;`);
+    changeElement('.location', `${data.name}`);
+
+    // if the weather is raining
+    // data.rain will be undefined if no rain
+    if (data.rain) {
+      const rainFall = data.rain['1h'];
+      changeElement(
+        '.rain',
+        `<i class="rain-icon fas fa-cloud-rain"></i>${rainFall} MM`,
+      );
+    }
+
+    // // check for snow
+    if (!data.rain && data.snow) {
+      const snowFall = data.snow['1h'];
+      changeElement('.rain', `<i class="fas fa-snowflake"></i>${snowFall} MM`);
+    } else {
+      changeElement(
+        '.rain',
+        `<i class="rain-icon fas fa-cloud-rain"></i>0.0 MM`,
+      );
+    }
   });
 
   //map init
@@ -90,6 +120,14 @@ $(document).ready(function () {
     },
   ).addTo(mymap);
 });
+
+const appendElement = (element, appendItem) => {
+  $(element).append(appendItem);
+};
+
+const changeElement = (element, Item) => {
+  $(element).html(Item);
+};
 
 const mapDiscover = (discovers) => {
   discovers.forEach((element) => {
