@@ -42,6 +42,24 @@
       integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
       crossorigin=""
     ></script>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- leaflet with open weather api -->
+    <!-- https://github.com/buche/leaflet-openweathermap -->
+    <script type="text/javascript" src="js/leaflet.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/leaflet-openweathermap.css"
+    />
+    <script type="text/javascript" src="js/leaflet-openweathermap.js"></script>
   </head>
   <body>
     <nav class="blue accent-1">
@@ -73,13 +91,16 @@
     </ul>
     <main>
       <ul id="discover-tabs" class="tabs tabs-fixed-width z-depth-1">
-        <li class="tab col s3"><a href="#discover-tab">Discover News</a></li>
-        <li class="tab col s3">
+        <li class="tab"><a href="#discover-tab">Discover News</a></li>
+        <li class="tab">
           <a href="#warning-tab">Climate Warnings</a>
         </li>
-        <li class="tab col s3"><a href="#mapid">Climate Map</a></li>
-        <li class="tab col s3">
-          <a href="#weather-forecast">Weather Forecast</a>
+        <li class="tab">
+          <a href="#weather-tab" class="active">Current Weather</a>
+        </li>
+        <li class="tab"><a href="#mapid">Climate Map</a></li>
+        <li class="tab">
+          <a href="#weather-forecast-div">Weather Forecast</a>
         </li>
       </ul>
       <!-- discover -->
@@ -100,15 +121,197 @@
         </div>
       </div>
 
-      <!-- weather forecast -->
-      <div class="row" id="weather-forecast">
-        <div class="col offset-s1 s10 weather-box">a</div>
-      </div>
-
       <!-- map place -->
       <div class="row">
-        <div class="col s10 offset-s1" id="mapid"></div>
+        <div class="col l10 offset-l1 s12" id="mapid"></div>
       </div>
+
+      <!-- weather widget -->
+
+      <div id="weather-tab">
+        <div>
+          <div id="weather_wrapper">
+            <div class="weatherCard">
+              <div class="currentTemp">
+                <span class="temp"></span>
+                <span class="location"></span>
+              </div>
+              <div class="currentWeather">
+                <!-- <span class="conditions">&#xf00d;</span> -->
+
+                <!-- <div class="hot weather-icon">
+                  <span class="sun"></span>
+                  <span class="sunx"></span>
+                </div> -->
+                <!-- <div class="cloudy weather-icon">
+                  <span class="cloud"></span>
+                  <span class="cloudx"></span>
+                </div> -->
+                <!-- <div class="stormy weather-icon">
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <span class="snowe"></span>
+                  <span class="snowex"></span>
+                  <span class="stick"></span>
+                  <span class="stick2"></span>
+                </div> -->
+                <!-- <div class="breezy weather-icon">
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <span class="cloudr"></span>
+                </div> -->
+                <!-- <div class="night weather-icon">
+                  <span class="moon"></span>
+                  <span class="spot1"></span>
+                  <span class="spot2"></span>
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div> -->
+                <div class="info">
+                  <span class="rain"></span>
+                  <span class="wind"></span>
+                </div>
+              </div>
+              <a
+                style="
+                  position: relative;
+                  left: calc(-25% + 700px);
+                  color: black;
+                "
+                href="https://openweathermap.org/"
+                target="_blank"
+                >Powered by open weather api
+                <i class="material-icons tiny">open_in_new</i>
+              </a>
+              <img
+                src="https://openweathermap.org/themes/openweathermap/assets/img/logo_white_cropped.png"
+                alt="open weather api"
+                style="position: relative; left: calc(-25% + 700px)"
+              />
+            </div>
+          </div>
+          >
+        </div>
+        <div class="row">
+          <ul class="collapsible col l10 offset-l1 s12">
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-thermometer-half"></i>Current Temperature
+              </div>
+              <div class="collapsible-body currentTemp-detail">
+                <span></span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-temperature-high"></i>
+                Max Temperature
+              </div>
+              <div class="collapsible-body maxTemp-detail">
+                <span></span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-temperature-low"></i>
+                Min Temperature
+              </div>
+              <div class="collapsible-body minTemp-detail">
+                <span></span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-thermometer-half"></i>
+                Human feeling Temperature
+              </div>
+              <div class="collapsible-body humanFeel-detail">
+                <span></span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-water"></i>
+                Pressure
+              </div>
+              <div class="collapsible-body pressure-detail">
+                <span></span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-tint"></i>
+                Humidity
+              </div>
+              <div class="collapsible-body humidity-detail">
+                <span></span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-wind"></i>
+                Wind speed
+              </div>
+              <div class="collapsible-body wind-detail">
+                <span></span>
+              </div>
+            </li>
+            <li>
+              <div class="collapsible-header">
+                <i class="fas fa-cloud-showers-heavy"></i>
+                Rainfall
+              </div>
+              <div class="collapsible-body rainfall-detail">
+                <span></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- weather forecast widget from open weather -->
+      <div class="row">
+        <div id="weather-forecast-div" class="col offset-s4"></div>
+      </div>
+      <script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script>
+      <script>
+        window.myWidgetParam
+          ? window.myWidgetParam
+          : (window.myWidgetParam = []);
+        window.myWidgetParam.push({
+          id: 11,
+          cityid: '2158177',
+          appid: '54adf57bbc67acd54ea5288d3964f297',
+          units: 'metric',
+          containerid: 'weather-forecast-div',
+        });
+        (function () {
+          var script = document.createElement('script');
+          script.async = true;
+          script.charset = 'utf-8';
+          script.src =
+            '//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(script, s);
+        })();
+      </script>
     </main>
 
     <!-- footer -->

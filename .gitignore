@@ -13,3 +13,5 @@ node_modules/
 
 # for vscode live server
 .vscode
+
+testFunctions.js

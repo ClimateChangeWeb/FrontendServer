@@ -1,39 +1,43 @@
+* {
+  font-family: 'Droid Sans', sans-serif;
+}
+
 @media only screen and (max-width: 992px) {
-    .parallax-container .section {
-        position: absolute;
-        top: 40%;
-    }
-    #index-banner .section {
-        top: 10%;
-    }
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    #index-banner .section {
-        top: 0;
-    }
+  #index-banner .section {
+    top: 0;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    #index-banner .section {
-        top: 0;
-    }
+  #index-banner .section {
+    top: 0;
+  }
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 .card {
-    text-align: center;
+  text-align: center;
 }
 
 .row {
-    top: 50%;
+  top: 50%;
 }

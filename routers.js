@@ -22,6 +22,7 @@ router.post('/login', (req, res, next) => {
   //authenticate with password mongoose local strategies
   passport.authenticate('local', (err, user, info) => {
     //user will be false if any err
+    console.log('the user is:');
     console.log(user);
     //return err
     if (err) {
@@ -32,8 +33,8 @@ router.post('/login', (req, res, next) => {
      * should also do in front end
      */
     if (!user) {
-      console.log(`info is ${info}`);
-      res.status(400).send(info);
+      console.log(`info is ${info.message}`);
+      res.status(400).json(info);
     }
     /**
      * login
@@ -146,7 +147,6 @@ router.get('/charities', (req, res) => {
     .get(charitiesURL)
     .then(function (response) {
       // handle success
-      console.log(`charity response: ${response.data.result}`);
       res.json(response.data.result);
     })
     .catch(function (error) {
@@ -163,5 +163,10 @@ router.get('/discover', (req, res) => {
 // charity page
 router.get('/charity', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/charity.html'));
+});
+
+// signup page
+router.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/signup.html'));
 });
 module.exports = router;
