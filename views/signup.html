@@ -26,13 +26,13 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/login.js"></script>
-    <link href="css/login.css" rel="stylesheet" media="screen,projection" />
+    <script src="js/signup.js"></script>
+    <link href="css/signup.css" rel="stylesheet" media="screen,projection" />
   </head>
   <body>
     <nav class="blue accent-1">
       <div class="nav-wrapper">
-        <a href="/home" class="brand-logo" style="margin-left: 20px">Be Aware of Climate Changes</a>
+        <a href="/home" class="brand-logo" style="margin-left: 20px; font-size: 3vw;">Be Aware of Climate Changes</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"
           ><i class="material-icons">menu</i></a
         >
@@ -41,7 +41,7 @@
           <li><a href="#">Donation</a></li>
           <li><a href="#">Admin Login</a></li>
           <li><a href="/signup">Sign Up</a></li>
-          <li><a class="waves-effect waves-light btn">Log In</a></li>
+          <li><a href="/login" class="waves-effect waves-light btn">Log In</a></li>
         </ul>
       </div>
     </nav>
@@ -55,29 +55,45 @@
     <main>
       <center>
         <img src="asset/login.jpg" alt="login" width="300" height="300" />
-        <h3>Login</h3>
+        <h3>Sign Up</h3>
       </center>
 
       <div class="row">
         <div class="input-field col s10 offset-s1 l6 offset-l3">
           <input value="" id="username" type="text" class="validate" />
           <label class="active" for="username">Username</label>
+          <span id="username-span"></span>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s10 offset-s1 l6 offset-l3">
-          <input value="" id="password" type="text" class="validate" />
+          <input value="" id="email" type="email" class="validate" />
+          <label class="active" for="email">Email</label>
+          <span id="email-span"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1 l6 offset-l3">
+          <input value="" id="password" type="password" class="validate" />
           <label class="active" for="password">Password</label>
+          <span id="password-span"></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10 offset-s1 l6 offset-l3">
+          <input value="" id="confirm_password" type="password" class="validate" />
+          <label class="active" for="confirm_password">Confirm Password</label>
+          <span id="confirm_password-span"></span>
         </div>
       </div>
       <div class="row">
         <button
           class="btn waves-effect waves-light col s10 offset-s1 l6 offset-l3"
-          id="loginBtn"
+          id="signupBtn"
           type="submit"
           name="action"
         >
-          Login
+          Sign Up
           <i class="material-icons right">send</i>
         </button>
       </div>

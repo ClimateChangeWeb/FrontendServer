@@ -146,13 +146,17 @@ router.get('/charities', (req, res) => {
     .get(charitiesURL)
     .then(function (response) {
       // handle success
-      console.log(`charity response: ${response.data.result}`);
       res.json(response.data.result);
     })
     .catch(function (error) {
       // handle error
       console.log(error);
     });
+});
+
+// home page
+router.get('/home', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/index.html'));
 });
 
 // discover page
@@ -163,5 +167,10 @@ router.get('/discover', (req, res) => {
 // charity page
 router.get('/charity', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/charity.html'));
+});
+
+// signup page
+router.get('/signup', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/signup.html'));
 });
 module.exports = router;
