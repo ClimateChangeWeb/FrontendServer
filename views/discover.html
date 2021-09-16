@@ -81,13 +81,16 @@
     </ul>
     <main>
       <ul id="discover-tabs" class="tabs tabs-fixed-width z-depth-1">
-        <li class="tab col s3"><a href="#discover-tab">Discover News</a></li>
-        <li class="tab col s3">
+        <li class="tab"><a href="#discover-tab">Discover News</a></li>
+        <li class="tab">
           <a href="#warning-tab">Climate Warnings</a>
         </li>
-        <li class="tab col s3"><a href="#mapid">Climate Map</a></li>
-        <li class="tab col s3">
+        <li class="tab">
           <a href="#weather-tab" class="active">Current Weather</a>
+        </li>
+        <li class="tab"><a href="#mapid">Climate Map</a></li>
+        <li class="tab">
+          <a href="#weather-forecast-div">Weather Forecast</a>
         </li>
       </ul>
       <!-- discover -->
@@ -120,8 +123,8 @@
           <div id="weather_wrapper">
             <div class="weatherCard">
               <div class="currentTemp">
-                <span class="temp">23&deg;</span>
-                <span class="location">Brussels</span>
+                <span class="temp"></span>
+                <span class="location"></span>
               </div>
               <div class="currentWeather">
                 <!-- <span class="conditions">&#xf00d;</span> -->
@@ -173,12 +176,8 @@
                   </ul>
                 </div> -->
                 <div class="info">
-                  <span class="rain">
-                    <i class="rain-icon fas fa-cloud-rain"></i>1.3 MM</span
-                  >
-                  <span class="wind">
-                    <i class="wind-icon fas fa-wind"></i>10 MPH</span
-                  >
+                  <span class="rain"></span>
+                  <span class="wind"></span>
                 </div>
               </div>
               <a
@@ -208,7 +207,7 @@
                 <i class="fas fa-thermometer-half"></i>Current Temperature
               </div>
               <div class="collapsible-body currentTemp-detail">
-                <span>current temp</span>
+                <span></span>
               </div>
             </li>
             <li>
@@ -217,7 +216,7 @@
                 Max Temperature
               </div>
               <div class="collapsible-body maxTemp-detail">
-                <span>max temp</span>
+                <span></span>
               </div>
             </li>
             <li>
@@ -226,7 +225,7 @@
                 Min Temperature
               </div>
               <div class="collapsible-body minTemp-detail">
-                <span>mini temp</span>
+                <span></span>
               </div>
             </li>
             <li>
@@ -235,7 +234,7 @@
                 Human feeling Temperature
               </div>
               <div class="collapsible-body humanFeel-detail">
-                <span>human felling temp</span>
+                <span></span>
               </div>
             </li>
             <li>
@@ -244,7 +243,7 @@
                 Pressure
               </div>
               <div class="collapsible-body pressure-detail">
-                <span>pressure</span>
+                <span></span>
               </div>
             </li>
             <li>
@@ -253,7 +252,7 @@
                 Humidity
               </div>
               <div class="collapsible-body humidity-detail">
-                <span>Humidity</span>
+                <span></span>
               </div>
             </li>
             <li>
@@ -262,7 +261,7 @@
                 Wind speed
               </div>
               <div class="collapsible-body wind-detail">
-                <span>Wind speed</span>
+                <span></span>
               </div>
             </li>
             <li>
@@ -271,12 +270,38 @@
                 Rainfall
               </div>
               <div class="collapsible-body rainfall-detail">
-                <span>Rainfall</span>
+                <span></span>
               </div>
             </li>
           </ul>
         </div>
       </div>
+      <!-- weather forecast widget from open weather -->
+      <div class="row">
+        <div id="weather-forecast-div" class="col offset-s4"></div>
+      </div>
+      <script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script>
+      <script>
+        window.myWidgetParam
+          ? window.myWidgetParam
+          : (window.myWidgetParam = []);
+        window.myWidgetParam.push({
+          id: 11,
+          cityid: '2158177',
+          appid: '54adf57bbc67acd54ea5288d3964f297',
+          units: 'metric',
+          containerid: 'weather-forecast-div',
+        });
+        (function () {
+          var script = document.createElement('script');
+          script.async = true;
+          script.charset = 'utf-8';
+          script.src =
+            '//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(script, s);
+        })();
+      </script>
     </main>
 
     <!-- footer -->

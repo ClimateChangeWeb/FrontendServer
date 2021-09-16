@@ -36,6 +36,21 @@ const breezyIcon = `<div class="breezy weather-icon">
 <span class="cloudr"></span>
 </div>`;
 
+const nightIcon = `<div class="night weather-icon">
+                  <span class="moon"></span>
+                  <span class="spot1"></span>
+                  <span class="spot2"></span>
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>`;
+
+const weatherArr = ['Rain', 'Clouds', 'Drizzle', 'Snow'];
+
 $(document).ready(function () {
   //init
   M.AutoInit();
@@ -67,9 +82,81 @@ $(document).ready(function () {
   $.get('/weather', function (data, textStatus, jqXHR) {
     // success callback
     console.log(data);
-    $('.weather-box').append(
-      `<p>Max temp is ${data.main.temp_max} Kelvin, and the Min temp is ${data.main.temp_min} Kelvin</p>`,
+    // for detail
+    changeElement('.currentTemp-detail > span', data.main.temp + '&deg;');
+    changeElement('.maxTemp-detail > span', data.main.temp_max + '&deg;');
+    changeElement('.minTemp-detail > span', data.main.temp_min + '&deg;');
+    changeElement('.humanFeel-detail > span', data.main.feels_like + '&deg;');
+    changeElement('.pressure-detail >span', data.main.pressure + 'hPa');
+    changeElement('.humidity-detail', data.main.humidity + '%');
+    changeElement('.wind-detail > span', data.wind.speed + 'm/s');
+
+    // // for widget
+    changeElement('.temp', `${data.main.temp.toFixed(1)}&deg;`);
+    changeElement('.location', `${data.name}`);
+
+    // change the wind
+    changeElement(
+      '.wind',
+      `<i class="wind-icon fas fa-wind"></i>${data.wind.speed} MPS`,
     );
+    // if the weather is raining
+    // data.rain will be undefined if no rain
+    if (data.rain) {
+      const rainFall = data.rain['1h'];
+      changeElement(
+        '.rain',
+        `<i class="rain-icon fas fa-cloud-rain"></i>${rainFall} MM`,
+      );
+      changeElement('.rainfall-detail > span', rainFall + 'mm');
+    }
+
+    // check for snow
+    if (!data.rain && data.snow) {
+      const snowFall = data.snow['1h'];
+      changeElement('.rain', `<i class="fas fa-snowflake"></i>${snowFall} MM`);
+
+      changeElement('.rainfall-detail > span', '0mm');
+    } else {
+      changeElement(
+        '.rain',
+        `<i class="rain-icon fas fa-cloud-rain"></i>0.0 MM`,
+      );
+      changeElement('.rainfall-detail > span', '0mm');
+    }
+    let weatherIconStr = '';
+    if (checkStrInArr(weatherArr, data.weather[0].main)) {
+      weatherIconStr = data.weather[0].main;
+    } else {
+      const dataCollectTime = timestampToDate(data.dt);
+      if (dataCollectTime.hours < 6) {
+        weatherIconStr = 'Night';
+      } else {
+        weatherIconStr = 'Day';
+      }
+    }
+
+    switch (weatherIconStr) {
+      case 'Rain':
+        appendElement('.currentWeather', stormyIcon);
+        break;
+      case 'Snow':
+        appendElement('.currentWeather', breezyIcon);
+        break;
+      case 'Drizzle':
+        appendElement('.currentWeather', stormyIcon);
+        break;
+      case 'Clouds':
+        appendElement('.currentWeather', cloudyIcon);
+        break;
+      case 'Night':
+        appendElement('.currentWeather', nightIcon);
+        break;
+
+      default:
+        appendElement('.currentWeather', hotIcon);
+        break;
+    }
   });
 
   //map init
@@ -90,6 +177,56 @@ $(document).ready(function () {
     },
   ).addTo(mymap);
 });
+
+const appendElement = (element, appendItem) => {
+  $(element).append(appendItem);
+};
+
+const changeElement = (element, Item) => {
+  $(element).html(Item);
+};
+
+const checkStrInArr = (arr, str) => {
+  return arr.includes(str);
+};
+
+const timestampToDate = (timestamp) => {
+  // convert unix timestamp to milliseconds
+  const ts_ms = timestamp * 1000;
+
+  // initialize new Date object
+  const date_ob = new Date(ts_ms);
+
+  // year as 4 digits (YYYY)
+  const year = date_ob.getFullYear();
+
+  // month as 2 digits (MM)
+  const month = ('0' + (date_ob.getMonth() + 1)).slice(-2);
+
+  // date as 2 digits (DD)
+  const date = ('0' + date_ob.getDate()).slice(-2);
+
+  // hours as 2 digits (hh)
+  const hours = ('0' + date_ob.getHours()).slice(-2);
+
+  // minutes as 2 digits (mm)
+  const minutes = ('0' + date_ob.getMinutes()).slice(-2);
+
+  // seconds as 2 digits (ss)
+  const seconds = ('0' + date_ob.getSeconds()).slice(-2);
+
+  const result = {
+    year: year,
+    month: month,
+    date: date,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
+  };
+
+  console.log(result);
+  return result;
+};
 
 const mapDiscover = (discovers) => {
   discovers.forEach((element) => {
