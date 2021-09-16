@@ -52,6 +52,7 @@ const nightIcon = `<div class="night weather-icon">
 const weatherArr = ['Rain', 'Clouds', 'Drizzle', 'Snow'];
 
 $(document).ready(function () {
+  initMap();
   //init
   M.AutoInit();
 
@@ -158,10 +159,10 @@ $(document).ready(function () {
         break;
     }
   });
+});
 
+const initMap = () => {
   //map init
-  //TODO:
-  // to use this map display climate
 
   var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 18,
@@ -174,19 +175,49 @@ $(document).ready(function () {
     opacity: 0.5,
     appId: '54adf57bbc67acd54ea5288d3964f297',
   });
+  var cloudscls = L.OWM.cloudsClassic({
+    appId: '54adf57bbc67acd54ea5288d3964f297',
+  });
   var temp = L.OWM.temperature({
     appId: '54adf57bbc67acd54ea5288d3964f297',
   });
-
+  var wind = L.OWM.wind({ appId: '54adf57bbc67acd54ea5288d3964f297' });
+  var pressurecntr = L.OWM.pressureContour({
+    appId: '54adf57bbc67acd54ea5288d3964f297',
+  });
+  var pressure = L.OWM.pressure({ appId: '54adf57bbc67acd54ea5288d3964f297' });
+  var snow = L.OWM.snow({ appId: '54adf57bbc67acd54ea5288d3964f297' });
+  var raincls = L.OWM.rainClassic({
+    appId: '54adf57bbc67acd54ea5288d3964f297',
+  });
+  var rain = L.OWM.rain({ appId: '54adf57bbc67acd54ea5288d3964f297' });
+  var precipitationcls = L.OWM.precipitationClassic({
+    appId: '54adf57bbc67acd54ea5288d3964f297',
+  });
+  var precipitation = L.OWM.precipitation({
+    appId: '54adf57bbc67acd54ea5288d3964f297',
+  });
   var map = L.map('mapid', {
     center: new L.LatLng(-25.274398, 133.775136),
-    zoom: 3.5,
+    zoom: 4,
     layers: [osm],
   });
   var baseMaps = { 'OSM Standard': osm };
-  var overlayMaps = { Clouds: clouds, Temp: temp };
+  var overlayMaps = {
+    Clouds: clouds,
+    CloudsClassic: cloudscls,
+    Temp: temp,
+    Wind: wind,
+    Pressure: pressure,
+    PressureContour: pressurecntr,
+    Snow: snow,
+    Rain: rain,
+    RainClassic: raincls,
+    Precipitation: precipitation,
+    PrecipitationClassic: precipitationcls,
+  };
   var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
-});
+};
 
 const appendElement = (element, appendItem) => {
   $(element).append(appendItem);
