@@ -15,3 +15,6 @@ node_modules/
 .vscode
 
 testFunctions.js
+
+# adminbro auto generated file
+.adminbro
