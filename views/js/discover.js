@@ -56,6 +56,9 @@ $(document).ready(function () {
   //init
   M.AutoInit();
 
+  //init the forecast card
+  initForecastCard('2172797');
+
   $.get(
     '/user', // url
     function (data, textStatus, jqXHR) {
@@ -161,6 +164,27 @@ $(document).ready(function () {
   });
 });
 
+const initForecastCard = (cityId) => {
+  window.myWidgetParam ? window.myWidgetParam : (window.myWidgetParam = []);
+  window.myWidgetParam.push({
+    id: 11,
+    cityid: cityId,
+    appid: '54adf57bbc67acd54ea5288d3964f297',
+    units: 'metric',
+    containerid: 'weather-forecast-div',
+  });
+  (function () {
+    var script = document.createElement('script');
+    script.async = true;
+    script.charset = 'utf-8';
+    script.src =
+      '//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(script, s);
+  })();
+};
+
+// init the climate info map
 const initMap = () => {
   //map init
 

@@ -60,6 +60,24 @@
       href="css/leaflet-openweathermap.css"
     />
     <script type="text/javascript" src="js/leaflet-openweathermap.js"></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon//favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./favicon//favicon-16x16.png"
+    />
+    <link rel="manifest" href="./favicon//site.webmanifest" />
   </head>
   <body>
     <nav class="blue accent-1">
@@ -73,8 +91,8 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="/charity">Charity</a></li>
           <li><a href="#">Donation</a></li>
-          <li><a href="#">Admin Login</a></li>
-          <li><a href="#">Sign Up</a></li>
+          <li><a href="/admin">Admin Login</a></li>
+          <li><a href="/signup">Sign Up</a></li>
           <li id="login-box">
             <a class="waves-effect waves-light btn" href="/login">Log In</a>
           </li>
@@ -85,8 +103,8 @@
     <ul class="sidenav blue accent-1" id="mobile-demo">
       <li><a href="/charity">Charity</a></li>
       <li><a href="#">Donation</a></li>
-      <li><a href="#">Admin Login</a></li>
-      <li><a href="#">Sign Up</a></li>
+      <li><a href="/admin">Admin Login</a></li>
+      <li><a href="/signup">Sign Up</a></li>
       <li><a class="waves-effect waves-light btn" href="/login">Log In</a></li>
     </ul>
     <main>
@@ -291,27 +309,6 @@
         <div id="weather-forecast-div" class="col offset-s4"></div>
       </div>
       <script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script>
-      <script>
-        window.myWidgetParam
-          ? window.myWidgetParam
-          : (window.myWidgetParam = []);
-        window.myWidgetParam.push({
-          id: 11,
-          cityid: '2158177',
-          appid: '54adf57bbc67acd54ea5288d3964f297',
-          units: 'metric',
-          containerid: 'weather-forecast-div',
-        });
-        (function () {
-          var script = document.createElement('script');
-          script.async = true;
-          script.charset = 'utf-8';
-          script.src =
-            '//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(script, s);
-        })();
-      </script>
     </main>
 
     <!-- footer -->

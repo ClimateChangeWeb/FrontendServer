@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const routes = require('./routers');
 const socket = require('./sockets');
 const passport = require('passport');
+const adminRouter = require('./adminRouter');
 const expressSession = require('express-session')({
   secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
@@ -18,6 +19,9 @@ const httpServer = require('http').createServer(app);
 const io = require('socket.io')(httpServer);
 
 socket.openSocket(io);
+
+//get the admin portal
+app.use('/admin', adminRouter);
 
 // parse application/json
 app.use(express.json());
