@@ -52,7 +52,8 @@ const nightIcon = `<div class="night weather-icon">
 const weatherArr = ['Rain', 'Clouds', 'Drizzle', 'Snow'];
 
 $(document).ajaxStop(function () {
-  alert('load finished');
+  // alert('load finished');
+  console.log(`load finished`);
 });
 
 $(document).ready(function () {

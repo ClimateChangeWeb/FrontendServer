@@ -27,6 +27,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/charity.js"></script>
+    <script src="js/checkUser.js"></script>
     <link href="css/charity.css" rel="stylesheet" media="screen,projection" />
     <link
       rel="apple-touch-icon"
@@ -51,20 +52,17 @@
   <body>
     <nav class="blue accent-1">
       <div class="nav-wrapper">
-        <a href="/" class="brand-logo" style="margin-left: 20px"
+        <a href="/" class="brand-logo" style="margin-left: 20px; font-size: 2vw"
           >Be Aware of Climate Changes</a
         >
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"
           ><i class="material-icons">menu</i></a
         >
-        <ul class="right hide-on-med-and-down">
+        <ul class="right hide-on-med-and-down" id="header-bar">
           <li><a href="/charity">Charity</a></li>
           <li><a href="#">Donation</a></li>
           <li><a href="/admin">Admin Login</a></li>
           <li><a href="/signup">Sign Up</a></li>
-          <li id="login-box">
-            <a class="waves-effect waves-light btn" href="/login">Log In</a>
-          </li>
         </ul>
       </div>
     </nav>
@@ -74,7 +72,6 @@
       <li><a href="#">Donation</a></li>
       <li><a href="/admin">Admin Login</a></li>
       <li><a href="/signup">Sign Up</a></li>
-      <li><a class="waves-effect waves-light btn" href="/login">Log In</a></li>
     </ul>
 
     <main>
