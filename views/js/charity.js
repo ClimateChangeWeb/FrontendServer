@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  //init
+  M.AutoInit();
   $.get('/charities', function (data, textStatus, jqXHR) {
     // success callback
     console.log(data);

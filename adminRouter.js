@@ -46,7 +46,7 @@ const AdminBroOptions = {
   },
   branding: {
     companyName: 'Climate Change',
-    logo: 'https://i.imgur.com/bO39GLB.png',
+    logo: 'https://i.imgur.com/X20tJYN.png',
     favicon: favIcon,
     softwareBrothers: false,
   },

@@ -8,7 +8,7 @@ const expressSession = require('express-session')({
   secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 60000 }, //1 hour
+  cookie: { maxAge: 3600000 }, //1 hour
 });
 require('dotenv').config();
 

@@ -51,6 +51,11 @@ const nightIcon = `<div class="night weather-icon">
 
 const weatherArr = ['Rain', 'Clouds', 'Drizzle', 'Snow'];
 
+$(document).ajaxStop(function () {
+  // alert('load finished');
+  console.log(`load finished`);
+});
+
 $(document).ready(function () {
   initMap();
   //init
@@ -300,7 +305,7 @@ const mapDiscover = (discovers) => {
       <a
         href="${element.url}"
         target="_blank"
-        >Checkout more here
+        >
       ${element.title}
         <i class="material-icons tiny">open_in_new</i>
       </a>
