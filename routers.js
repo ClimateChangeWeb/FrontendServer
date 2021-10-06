@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const path = require('path');
 const signupFunc = require('./controllers/signup');
-const connectEnsureLogin = require('connect-ensure-login');
+const { ensureLoggedOut } = require('connect-ensure-login');
 const morgan = require('morgan');
 var fs = require('fs');
 const axios = require('axios');
@@ -52,7 +52,7 @@ router.post('/login', (req, res, next) => {
 /**
  * get the user info from the login form
  */
-router.get('/login', (req, res) => {
+router.get('/login', ensureLoggedOut(), (req, res) => {
   res.sendFile(path.resolve('views/login.html'));
 });
 
@@ -82,6 +82,11 @@ router.post('/signup', (req, res, next) => {
   //check if the information is provided in the backend side.
   console.log('signupFunc called');
   signupFunc(req, res, next);
+});
+
+// signup page
+router.get('/signup', ensureLoggedOut(), (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/signup.html'));
 });
 
 // frontend get user info
@@ -165,8 +170,4 @@ router.get('/charity', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/charity.html'));
 });
 
-// signup page
-router.get('/signup', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/signup.html'));
-});
 module.exports = router;

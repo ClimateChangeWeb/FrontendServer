@@ -2,6 +2,8 @@ const loginButton = `<li id="login-box">
 <a class="waves-effect waves-light btn" href="/login">Log In</a>
 </li>`;
 
+const signupBtn = `<li><a href="/signup">Sign Up</a></li>`;
+
 const userForNavBar = (user) => {
   return `<li>
   <img
@@ -47,6 +49,8 @@ $(document).ready(function () {
         $('#mobile-demo').prepend(userForSideBar(data.user));
       } else {
         console.log('no user find');
+        $('#header-bar').append(signupBtn);
+        $('#mobile-demo').append(signupBtn);
         $('#header-bar').append(loginButton);
         $('#mobile-demo').append(loginButton);
       }
