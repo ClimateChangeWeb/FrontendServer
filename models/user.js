@@ -16,6 +16,8 @@ const userSchema = new Schema({
     validate: [validateEmail, 'Please fill a valid email address'],
   },
   city: String,
+  cityId: Number,
+  country: String,
 });
 
 //plugin the password mongoose

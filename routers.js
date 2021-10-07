@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const path = require('path');
 const signupFunc = require('./controllers/signup');
+const editUser = require('./controllers/edit-user');
 const { ensureLoggedOut } = require('connect-ensure-login');
 const morgan = require('morgan');
 var fs = require('fs');
@@ -91,6 +92,9 @@ router.get('/signup', ensureLoggedOut(), (req, res) => {
 
 // frontend get user info
 router.get('/user', (req, res) => res.send({ user: req.user }));
+
+//edit user
+router.patch('/user', editUser);
 
 // get discover news
 const discoverURL =
