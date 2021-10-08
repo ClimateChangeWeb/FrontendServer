@@ -61,14 +61,23 @@ $(document).ready(function () {
   //init
   M.AutoInit();
 
-  //init the forecast card
-  initForecastCard('2172797');
-
   $.get(
     '/user', // url
     function (data, textStatus, jqXHR) {
       // success callback
       console.log(data);
+      if (!Object.keys(data).length) {
+        //init the forecast card with melbourne as default
+        initForecastCard('2158177');
+      } else {
+        if (data.user.city) {
+          //init the forecast card
+          initForecastCard(data.user.cityId);
+        } else {
+          //init the forecast card with melbourne as default
+          initForecastCard('2158177');
+        }
+      }
     },
   );
 
