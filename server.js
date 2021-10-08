@@ -2,7 +2,6 @@ const express = require('express');
 const chalk = require('chalk');
 const mongoose = require('mongoose');
 const routes = require('./routers');
-const socket = require('./sockets');
 const passport = require('passport');
 const adminRouter = require('./adminRouter');
 const expressSession = require('express-session')({
@@ -15,11 +14,6 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-
-const httpServer = require('http').createServer(app);
-const io = require('socket.io')(httpServer);
-
-socket.openSocket(io);
 
 //get the admin portal
 app.use('/admin', adminRouter);
@@ -83,6 +77,6 @@ app.use((error, req, res, next) => {
   });
 });
 
-httpServer.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server start at PORT ${PORT}`);
 });

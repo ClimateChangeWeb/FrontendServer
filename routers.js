@@ -19,7 +19,7 @@ morgan.token('host', function (req, res) {
 });
 
 //login endpoint
-router.post('/login', (req, res, next) => {
+router.post('/login', ensureLoggedOut(), (req, res, next) => {
   //authenticate with password mongoose local strategies
   passport.authenticate('local', (err, user, info) => {
     //user will be false if any err
@@ -67,7 +67,7 @@ router.get('/logout', ensureLoggedIn('/'), function (req, res) {
 });
 
 //signup endpoint
-router.post('/signup', (req, res, next) => {
+router.post('/signup', ensureLoggedOut(), (req, res, next) => {
   /**
    * the error check should also be done in the front end
    * but we still need backend error check
@@ -94,7 +94,7 @@ router.get('/signup', ensureLoggedOut(), (req, res) => {
 router.get('/user', (req, res) => res.send({ user: req.user }));
 
 //edit user
-router.patch('/user', editUser);
+router.patch('/user', ensureLoggedIn(), editUser);
 
 // get discover news
 const discoverURL =
@@ -172,6 +172,12 @@ router.get('/discover', (req, res) => {
 // charity page
 router.get('/charity', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/charity.html'));
+});
+
+// charity page
+router.get('/private/:username', (req, res) => {
+  //console.log(req.params);
+  res.sendFile(path.join(__dirname, '/views/private.html'));
 });
 
 module.exports = router;
