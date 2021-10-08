@@ -4,7 +4,7 @@ const passport = require('passport');
 const path = require('path');
 const signupFunc = require('./controllers/signup');
 const editUser = require('./controllers/edit-user');
-const { ensureLoggedOut } = require('connect-ensure-login');
+const { ensureLoggedOut, ensureLoggedIn } = require('connect-ensure-login');
 const morgan = require('morgan');
 var fs = require('fs');
 const axios = require('axios');
@@ -57,13 +57,13 @@ router.get('/login', ensureLoggedOut(), (req, res) => {
   res.sendFile(path.resolve('views/login.html'));
 });
 
-router.get('/logout', function (req, res) {
+router.get('/logout', ensureLoggedIn('/'), function (req, res) {
   /**
    * logout function
    */
   req.logout();
   //redirect to login endpoint
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 //signup endpoint
