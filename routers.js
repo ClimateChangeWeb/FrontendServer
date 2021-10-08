@@ -3,7 +3,8 @@ const router = express.Router();
 const passport = require('passport');
 const path = require('path');
 const signupFunc = require('./controllers/signup');
-const connectEnsureLogin = require('connect-ensure-login');
+const editUser = require('./controllers/edit-user');
+const { ensureLoggedOut, ensureLoggedIn } = require('connect-ensure-login');
 const morgan = require('morgan');
 var fs = require('fs');
 const axios = require('axios');
@@ -18,7 +19,7 @@ morgan.token('host', function (req, res) {
 });
 
 //login endpoint
-router.post('/login', (req, res, next) => {
+router.post('/login', ensureLoggedOut(), (req, res, next) => {
   //authenticate with password mongoose local strategies
   passport.authenticate('local', (err, user, info) => {
     //user will be false if any err
@@ -52,21 +53,21 @@ router.post('/login', (req, res, next) => {
 /**
  * get the user info from the login form
  */
-router.get('/login', (req, res) => {
+router.get('/login', ensureLoggedOut(), (req, res) => {
   res.sendFile(path.resolve('views/login.html'));
 });
 
-router.get('/logout', function (req, res) {
+router.get('/logout', ensureLoggedIn('/'), function (req, res) {
   /**
    * logout function
    */
   req.logout();
   //redirect to login endpoint
-  res.redirect('/login');
+  res.redirect('/');
 });
 
 //signup endpoint
-router.post('/signup', (req, res, next) => {
+router.post('/signup', ensureLoggedOut(), (req, res, next) => {
   /**
    * the error check should also be done in the front end
    * but we still need backend error check
@@ -84,8 +85,16 @@ router.post('/signup', (req, res, next) => {
   signupFunc(req, res, next);
 });
 
+// signup page
+router.get('/signup', ensureLoggedOut(), (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/signup.html'));
+});
+
 // frontend get user info
 router.get('/user', (req, res) => res.send({ user: req.user }));
+
+//edit user
+router.patch('/user', ensureLoggedIn(), editUser);
 
 // get discover news
 const discoverURL =
@@ -165,8 +174,10 @@ router.get('/charity', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/charity.html'));
 });
 
-// signup page
-router.get('/signup', (req, res) => {
-  res.sendFile(path.join(__dirname, '/views/signup.html'));
+// charity page
+router.get('/private/:username', (req, res) => {
+  //console.log(req.params);
+  res.sendFile(path.join(__dirname, '/views/private.html'));
 });
+
 module.exports = router;

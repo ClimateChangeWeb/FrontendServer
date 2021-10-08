@@ -14,7 +14,9 @@ node_modules/
 # for vscode live server
 .vscode
 
+# local test files
 testFunctions.js
+test.html
 
 # adminbro auto generated file
 .adminbro

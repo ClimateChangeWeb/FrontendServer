@@ -2,6 +2,8 @@ const loginButton = `<li id="login-box">
 <a class="waves-effect waves-light btn" href="/login">Log In</a>
 </li>`;
 
+const signupBtn = `<li><a href="/signup">Sign Up</a></li>`;
+
 const userForNavBar = (user) => {
   return `<li>
   <img
@@ -13,7 +15,7 @@ const userForNavBar = (user) => {
   />
 </li>
 <li>
-  <a class="col s6" href="" style="max-height: 64px">
+  <a href="" style="max-height: 64px">
     ${user.username}
   </a>
 </li>`;
@@ -25,7 +27,6 @@ const userForSideBar = (user) => {
   <li>
   <a href=""
     ><img
-      class="col s6"
       src="/asset/img_avatar.png"
       alt="Avatar"
       height="44"
@@ -37,6 +38,10 @@ const userForSideBar = (user) => {
   >
 </li>`;
 };
+
+const logoutItem = `<li id="logout">
+<a class="waves-effect red lighten-1 btn" href="/logout">Log Out</a>
+</li>`;
 $(document).ready(function () {
   $.get(
     '/user', // url
@@ -45,8 +50,14 @@ $(document).ready(function () {
         console.log(data.user.username);
         $('#header-bar').append(userForNavBar(data.user));
         $('#mobile-demo').prepend(userForSideBar(data.user));
+
+        // add logout button
+        $('#header-bar').append(logoutItem);
+        $('#mobile-demo').append(logoutItem);
       } else {
         console.log('no user find');
+        $('#header-bar').append(signupBtn);
+        $('#mobile-demo').append(signupBtn);
         $('#header-bar').append(loginButton);
         $('#mobile-demo').append(loginButton);
       }

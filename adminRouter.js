@@ -8,6 +8,7 @@ const userModel = require('./models/user');
 const charityModel = require('./models/charity');
 const discoverModel = require('./models/discover');
 const favIcon = require('./models/adminFavicon');
+const cityModel = require('./models/city');
 
 const databaseParent = {
   name: 'Data',
@@ -34,6 +35,7 @@ const AdminBroOptions = {
     { resource: userModel, options: { navigation: databaseParent } },
     { resource: charityModel, options: { navigation: databaseParent } },
     { resource: discoverModel, options: { navigation: databaseParent } },
+    { resource: cityModel, options: { navigation: databaseParent } },
   ],
   preventAssignment: true,
   dashboard: {
