@@ -43,13 +43,9 @@
       sizes="16x16"
       href="./favicon//favicon-16x16.png"
     />
-    <link rel="manifest" href="../favicon//site.webmanifest" />
-    <script src="../js/private.js"></script>
-    <link
-      href="../css/private.css"
-      rel="stylesheet"
-      media="screen,projection"
-    />
+    <link rel="manifest" href="./favicon//site.webmanifest" />
+    <script src="js/private.js"></script>
+    <link href="css/private.css" rel="stylesheet" media="screen,projection" />
   </head>
   <body>
     <nav class="blue accent-1">
@@ -73,7 +69,37 @@
       <li><a href="#">Donation</a></li>
       <li><a href="/admin">Admin Login</a></li>
     </ul>
-    <main></main>
+
+    <main>
+      <div
+        class="row"
+        style="
+          height: 100px;
+          width: 100%;
+          background-color: aqua;
+          position: absolute;
+          opacity: 0.8;
+        "
+      >
+        <div class="col s6">abc</div>
+      </div>
+
+      <div
+        class="row"
+        style="
+          height: 100px;
+          width: 50%;
+          background-color: red;
+          z-index: 999;
+          position: absolute;
+          opacity: 0.8;
+        "
+      >
+        <div class="col s6">abcddd</div>
+      </div>
+
+      <div class="row" style="height: 120px; background-color: black"></div>
+    </main>
 
     <footer class="page-footer blue accent-1">
       <div class="container">

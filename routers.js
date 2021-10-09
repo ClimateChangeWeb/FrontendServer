@@ -132,7 +132,7 @@ router.get('/warnings', (req, res) => {
 
 // get the weather url
 const weatherURL =
-  'https://climate-change-backend.us-south.cf.appdomain.cloud/weatherForecast';
+  'https://climate-change-backend.us-south.cf.appdomain.cloud/weather?cityId=833';
 router.get('/weather', (req, res) => {
   //TODO: get the city from frontend for the weather.
   axios
@@ -175,7 +175,7 @@ router.get('/charity', (req, res) => {
 });
 
 // charity page
-router.get('/private/:username', (req, res) => {
+router.get('/private', (req, res) => {
   //console.log(req.params);
   res.sendFile(path.join(__dirname, '/views/private.html'));
 });
