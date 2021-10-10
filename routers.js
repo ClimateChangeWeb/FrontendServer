@@ -174,6 +174,11 @@ router.get('/charity', (req, res) => {
   res.sendFile(path.join(__dirname, '/views/charity.html'));
 });
 
+// donation page
+router.get('/donation', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/donation.html'));
+});
+
 // charity page
 router.get('/private/:username', (req, res) => {
   //console.log(req.params);
