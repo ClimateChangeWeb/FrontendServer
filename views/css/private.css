@@ -6,8 +6,68 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background-image: url('../asset/watercolor.png');
 }
 
 main {
   flex: 1 0 auto;
+}
+
+.user {
+  height: auto;
+  width: 100%;
+  position: absolute;
+}
+
+.loader {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  visibility: hidden;
+  background: rgb(34, 193, 195);
+  background: radial-gradient(
+    circle,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(177, 45, 253, 1) 100%
+  );
+  opacity: 0.9;
+}
+
+img {
+  height: 50%;
+  width: 50%;
+}
+
+.user-profile {
+  text-align: center;
+}
+.profile-container {
+  background-color: darkgrey;
+  border-radius: 20px;
+}
+.setting-container {
+}
+
+.collection-item {
+  background-color: red;
+}
+.user-info {
+  text-align: left;
+}
+.collapsible-body {
+  background-color: #fafafa;
+}
+#enable-edit {
+  cursor: pointer;
+}
+#search-city-btn {
+  cursor: pointer;
+}
+.preloader-wrapper {
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
 }

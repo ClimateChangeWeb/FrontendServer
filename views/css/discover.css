@@ -620,3 +620,6 @@ main {
   top: 6px;
   position: absolute;
 }
+.collapsible-body {
+  background-color: #23a6d5;
+}
