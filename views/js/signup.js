@@ -1,11 +1,89 @@
 $(document).ready(function () {
   //init side bar
   $('.sidenav').sidenav();
+  M.AutoInit();
 
   var usernameBool = false;
   var emailBool = false;
   var passwordcharBool = false;
   var passwordconfirmBool = false;
+
+  // Live updates for the text fields
+  $('#username').on("input", function() {
+    if ($('#username').val().length >= 3) {
+      $('#username').removeClass("invalid");
+      $('#username').addClass("valid");
+    } else {
+      $('#username').removeClass("valid");
+      $('#username').addClass("invalid");
+    }
+  })
+  $('#username').blur(function() {
+    if ($('#username').val().length >= 3) {
+      $('#username').removeClass("invalid");
+      $('#username').addClass("valid");
+    } else {
+      $('#username').removeClass("valid");
+      $('#username').addClass("invalid");
+    }
+  })
+
+  $('#password').on("input", function() {
+    if ($('#password').val().length >= 8) {
+      $('#password').removeClass("invalid");
+      $('#password').addClass("valid");
+    } else {
+      $('#password').removeClass("valid");
+      $('#password').addClass("invalid");
+    }
+  })
+  $('#password').blur(function() {
+    if ($('#password').val().length >= 8) {
+      $('#password').removeClass("invalid");
+      $('#password').addClass("valid");
+    } else {
+      $('#password').removeClass("valid");
+      $('#password').addClass("invalid");
+    }
+  })
+
+  $('#email').on("input", function() {
+    if (isEmail($('#email').val())) {
+      $('#email').removeClass("invalid");
+      $('#email').addClass("valid");
+    } else {
+      $('#email').removeClass("valid");
+      $('#email').addClass("invalid");
+    }
+  })
+  $('#email').blur(function() {
+    if (isEmail($('#email').val())) {
+      $('#email').removeClass("invalid");
+      $('#email').addClass("valid");
+    } else {
+      $('#email').removeClass("valid");
+      $('#email').addClass("invalid");
+    }
+  })
+
+  $('#confirm_password').on("input", function() {
+    if ($('#confirm_password').val() == $('#password').val()) {
+      $('#confirm_password').removeClass("invalid");
+      $('#confirm_password').addClass("valid");
+    } else {
+      $('#confirm_password').removeClass("valid");
+      $('#confirm_password').addClass("invalid");
+    }
+  })
+  $('#confirm_password').blur(function() {
+    if ($('#confirm_password').val() == $('#password').val()) {
+      $('#confirm_password').removeClass("invalid");
+      $('#confirm_password').addClass("valid");
+    } else {
+      $('#confirm_password').removeClass("valid");
+      $('#confirm_password').addClass("invalid");
+    }
+  })
 
   $('#signupBtn').click(() => {
     console.log('signup button clicked');
