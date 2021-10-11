@@ -21,6 +21,9 @@ $(document).ready(function () {
         console.log(errorThrown);
         console.log(jqXhr);
         console.log(textStatus);
+        $('#username').val(''),
+          $('#password').val(''),
+          M.toast({ html: jqXhr.responseJSON.message });
       },
     });
   });

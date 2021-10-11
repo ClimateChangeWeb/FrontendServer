@@ -60,6 +60,9 @@
           <li><a href="/charity">Charity</a></li>
           <li><a href="#">Donation</a></li>
           <li><a href="/admin">Admin Login</a></li>
+          <li>
+            <a class="waves-effect red lighten-1 btn" href="/logout">Log Out</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -68,6 +71,9 @@
       <li><a href="/charity">Charity</a></li>
       <li><a href="#">Donation</a></li>
       <li><a href="/admin">Admin Login</a></li>
+      <li>
+        <a class="waves-effect red lighten-1 btn" href="/logout">Log Out</a>
+      </li>
     </ul>
 
     <main>
@@ -133,11 +139,13 @@
                 </div>
                 <div class="card-content user-info">
                   <div class="row">
-                    <h7 class="col s3" style="font-weight: bold">Username:</h7>
+                    <h7 class="col s6 l3" style="font-weight: bold"
+                      >Username:</h7
+                    >
                     <p class="col s6" id="username"></p>
                   </div>
                   <div class="row">
-                    <h7 class="col s3" style="font-weight: bold">City:</h7>
+                    <h7 class="col s6 l3" style="font-weight: bold">City:</h7>
                     <p class="col s6" id="selected-city"></p>
                   </div>
                 </div>
@@ -150,18 +158,22 @@
             <ul class="collapsible">
               <li>
                 <div class="collapsible-header">
-                  <i class="material-icons">people</i>Change Username
+                  <i class="material-icons">email</i>Change Email
                 </div>
                 <div class="collapsible-body">
                   <div class="row">
                     <div class="input-field col s10">
                       <input
                         placeholder="Placeholder"
-                        id="change-username-input"
-                        type="text"
+                        id="change-email-input"
+                        type="email"
                         class="validate"
                         disabled
                       />
+                      <span
+                        class="helper-text"
+                        data-error="Please enter a valid email."
+                      ></span>
                     </div>
                     <div class="col s2" style="margin-top: 20px">
                       <a id="enable-edit">
@@ -169,9 +181,7 @@
                       >
                     </div>
                   </div>
-                  <a
-                    class="waves-effect waves-light btn"
-                    id="change-username-btn"
+                  <a class="waves-effect waves-light btn" id="change-email-btn"
                     >submit</a
                   >
                 </div>
@@ -184,10 +194,20 @@
                   <div class="row">
                     <input id="old-password" type="password" class="validate" />
                     <label for="password">Old Password</label>
+                    <br />
+                    <span
+                      class="helper-text"
+                      data-error="Password must be a minimum of 8 characters."
+                    ></span>
                   </div>
                   <div class="row">
                     <input id="new-password" type="password" class="validate" />
                     <label for="password">New Password</label>
+                    <br />
+                    <span
+                      class="helper-text"
+                      data-error="Password must be a minimum of 8 characters."
+                    ></span>
                   </div>
                   <div class="row">
                     <input
@@ -196,6 +216,11 @@
                       class="validate"
                     />
                     <label for="password">Confirm New Password</label>
+                    <br />
+                    <span
+                      class="helper-text"
+                      data-error="Passwords do not match."
+                    ></span>
                   </div>
 
                   <div class="row">
