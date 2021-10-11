@@ -54,6 +54,8 @@ const weatherArr = ['Rain', 'Clouds', 'Drizzle', 'Snow'];
 $(document).ajaxStop(function () {
   // alert('load finished');
   console.log(`load finished`);
+  $('.loader').css('visibility', 'hidden');
+  $('main').css('visibility', 'visible');
 });
 
 $(document).ready(function () {
