@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend</title>
+    <title>Donation</title>
     <!-- google fonts  -->
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -26,8 +26,9 @@
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="js/signup.js"></script>
-    <link href="css/signup.css" rel="stylesheet" media="screen,projection" />
+    <script src="js/charity.js"></script>
+    <script src="js/checkUser.js"></script>
+    <link href="css/charity.css" rel="stylesheet" media="screen,projection" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -47,6 +48,7 @@
     />
     <link rel="manifest" href="./favicon//site.webmanifest" />
   </head>
+
   <body>
     <nav class="blue accent-1">
       <div class="nav-wrapper">
@@ -66,58 +68,33 @@
 
     <ul class="sidenav blue accent-1" id="mobile-demo">
       <li><a href="/charity">Charity</a></li>
-      <li><a href="/donation">Donation</a></li>
+      <li><a href="#">Donation</a></li>
       <li><a href="/admin">Admin Login</a></li>
     </ul>
-    <main>
-      <center>
-        <img src="asset/login.png" alt="login" />
-        <h3>Sign Up</h3>
-      </center>
 
-      <div class="row">
-        <div class="input-field col s10 offset-s1 l6 offset-l3">
-          <input value="" id="username" type="text" class="validate" />
-          <label class="active" for="username">Username</label>
-          <span class="helper-text" id="username-span"></span>
+    <main>
+      <!-- charities -->
+      <div class="container">
+        <h4 style="text-align: center">Donation</h4>
+        <div class="col s12 m10 l8 xl6" id="charity-div">
+          <div class="card">
+            <div class="card-content">
+                <p>Thankyou for considering to donate to our Climate Change website. Every dollar you donate helps keep this site ad-free!</p>
+            </div>
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a href="#donate5">Donate $5</a></li>
+                    <li class="tab"><a href="#donate10">Donate $10</a></li>
+                    <li class="tab"><a href="#donate20">Donate $20</a></li>
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="donate5"><a class="btn-large" href="https://buy.stripe.com/test_eVa17zbzf02a35u4gh" target="_blank" rel="noreferrer noopener">Donate $5</a></div>
+                <div id="donate10"><a class="btn-large" href="https://buy.stripe.com/test_6oE2bD9r78yG5dCaEG" target="_blank" rel="noreferrer noopener">Donate $10</a></div>
+                <div id="donate20"><a class="btn-large" href="https://buy.stripe.com/test_bIY7vXbzfeX4eOc8wz" target="_blank" rel="noreferrer noopener">Donate $20</a></div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10 offset-s1 l6 offset-l3">
-          <input value="" id="email" type="email" class="validate" />
-          <label class="active" for="email">Email</label>
-          <span class="helper-text" id="email-span"></span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10 offset-s1 l6 offset-l3">
-          <input value="" id="password" type="password" class="validate" />
-          <label class="active" for="password">Password</label>
-          <span class="helper-text" id="password-span"></span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s10 offset-s1 l6 offset-l3">
-          <input
-            value=""
-            id="confirm_password"
-            type="password"
-            class="validate"
-          />
-          <label class="active" for="confirm_password">Confirm Password</label>
-          <span class="helper-text" id="confirm_password-span"></span>
-        </div>
-      </div>
-      <div class="row">
-        <button
-          class="btn waves-effect waves-light col s10 offset-s1 l6 offset-l3"
-          id="signupBtn"
-          type="submit"
-          name="action"
-        >
-          Sign Up
-          <i class="material-icons right">send</i>
-        </button>
       </div>
     </main>
 
