@@ -5,6 +5,7 @@ const path = require('path');
 const cityModel = require('./models/city');
 const signupFunc = require('./controllers/signup');
 const editUser = require('./controllers/edit-user');
+const updatePassword = require('./controllers/update-password');
 const { ensureLoggedOut, ensureLoggedIn } = require('connect-ensure-login');
 const morgan = require('morgan');
 var fs = require('fs');
@@ -90,6 +91,9 @@ router.post('/signup', ensureLoggedOut(), (req, res, next) => {
 router.get('/signup', ensureLoggedOut(), (req, res) => {
   res.sendFile(path.join(__dirname, '/views/signup.html'));
 });
+
+//change password
+router.post('/password/change', ensureLoggedIn(), updatePassword);
 
 // frontend get user info
 router.get('/user', (req, res) => res.send({ user: req.user }));

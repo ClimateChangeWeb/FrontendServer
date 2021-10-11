@@ -60,6 +60,9 @@
           <li><a href="/charity">Charity</a></li>
           <li><a href="#">Donation</a></li>
           <li><a href="/admin">Admin Login</a></li>
+          <li>
+            <a class="waves-effect red lighten-1 btn" href="/logout">Log Out</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -68,6 +71,9 @@
       <li><a href="/charity">Charity</a></li>
       <li><a href="#">Donation</a></li>
       <li><a href="/admin">Admin Login</a></li>
+      <li>
+        <a class="waves-effect red lighten-1 btn" href="/logout">Log Out</a>
+      </li>
     </ul>
 
     <main>
@@ -166,8 +172,7 @@
                       />
                       <span
                         class="helper-text"
-                        data-error="Please use email format."
-                        data-success="right"
+                        data-error="Please enter a valid email."
                       ></span>
                     </div>
                     <div class="col s2" style="margin-top: 20px">
@@ -189,10 +194,20 @@
                   <div class="row">
                     <input id="old-password" type="password" class="validate" />
                     <label for="password">Old Password</label>
+                    <br />
+                    <span
+                      class="helper-text"
+                      data-error="Password must be a minimum of 8 characters."
+                    ></span>
                   </div>
                   <div class="row">
                     <input id="new-password" type="password" class="validate" />
                     <label for="password">New Password</label>
+                    <br />
+                    <span
+                      class="helper-text"
+                      data-error="Password must be a minimum of 8 characters."
+                    ></span>
                   </div>
                   <div class="row">
                     <input
@@ -201,6 +216,11 @@
                       class="validate"
                     />
                     <label for="password">Confirm New Password</label>
+                    <br />
+                    <span
+                      class="helper-text"
+                      data-error="Passwords do not match."
+                    ></span>
                   </div>
 
                   <div class="row">

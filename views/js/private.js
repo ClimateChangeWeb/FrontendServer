@@ -79,6 +79,62 @@ $(document).ready(function () {
       $('#change-email-input').prop('disabled', true);
     }
   });
+
+  // change password
+  $('#change-password-btn').click(() => {
+    if ($('#new-password').val().length < 8) {
+      $('#new-password').addClass('invalid');
+    }
+    if ($('#new-password').val() !== $('#new-password-confirm').val()) {
+      $('#new-password-confirm').addClass('invalid');
+    }
+    if ($('#old-password').val().length < 8) {
+      $('#old-password').addClass('invalid');
+    }
+
+    // no issue with new password then send ajax
+    if (
+      $('#new-password').hasClass('invalid') == false &&
+      $('#new-password-confirm').hasClass('invalid') == false &&
+      $('#old-password').hasClass('invalid') == false
+    ) {
+      const newPass = $('#new-password').val();
+      const oldPass = $('#old-password').val();
+      const payload = {
+        oldPassword: oldPass,
+        newPassword: newPass,
+      };
+      $.ajax({
+        type: 'POST',
+        url: '/password/change',
+        contentType: 'application/json',
+        data: JSON.stringify(payload),
+        statusCode: {
+          403: function (err) {
+            console.log(err.responseJSON.error.message);
+            M.toast({ html: err.responseJSON.error.message });
+            $('#new-password').val('');
+            $('#new-password-confirm').val('');
+            $('#old-password').val('');
+          },
+          500: function () {
+            console.log('500');
+            alert(
+              'There has some development error please contract website admin',
+            );
+          },
+        },
+        success: function (data, textStatus, jqXHR) {
+          console.log(data);
+          M.toast({ html: data.message });
+          setTimeout(() => {
+            window.location.href = '/logout';
+          }, 1000);
+        },
+      });
+    } else {
+    }
+  });
 });
 
 const selectWeatherElement = (city) => {
