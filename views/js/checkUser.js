@@ -15,7 +15,7 @@ const userForNavBar = (user) => {
   />
 </li>
 <li>
-  <a href="" style="max-height: 64px">
+  <a href="/private" style="max-height: 64px">
     ${user.username}
   </a>
 </li>`;
@@ -25,7 +25,7 @@ const userForSideBar = (user) => {
   return `
   <br />
   <li>
-  <a href=""
+  <a href="/private"
     ><img
       src="/asset/img_avatar.png"
       alt="Avatar"

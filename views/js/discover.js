@@ -69,13 +69,16 @@ $(document).ready(function () {
       if (!Object.keys(data).length) {
         //init the forecast card with melbourne as default
         initForecastCard('2158177');
+        setupWeatherPage('2158177');
       } else {
         if (data.user.city) {
           //init the forecast card
           initForecastCard(data.user.cityId);
+          setupWeatherPage(data.user.cityId);
         } else {
           //init the forecast card with melbourne as default
           initForecastCard('2158177');
+          setupWeatherPage('2158177');
         }
       }
     },
@@ -94,10 +97,12 @@ $(document).ready(function () {
     console.log(data);
     mapWarnings(data);
   });
+});
 
+const setupWeatherPage = (cityId) => {
   // get weather
   //TODO: use user selected city for now only use melbourne for showcase
-  $.get('/weather', function (data, textStatus, jqXHR) {
+  $.get(`/weather?cityId=${cityId}`, function (data, textStatus, jqXHR) {
     // success callback
     console.log(data);
     // for detail
@@ -176,7 +181,7 @@ $(document).ready(function () {
         break;
     }
   });
-});
+};
 
 const initForecastCard = (cityId) => {
   window.myWidgetParam ? window.myWidgetParam : (window.myWidgetParam = []);

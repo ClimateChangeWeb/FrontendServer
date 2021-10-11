@@ -61,7 +61,8 @@ img {
 #enable-edit {
   cursor: pointer;
 }
-#search-city-btn {
+#search-city-btn,
+#city-search-btn {
   cursor: pointer;
 }
 .preloader-wrapper {

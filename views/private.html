@@ -73,7 +73,43 @@
     <main>
       <div class="row loader">
         <div class="preloader-wrapper big active">
-          <div class="spinner-layer spinner-red-only">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
             <div class="circle-clipper left">
               <div class="circle"></div>
             </div>
@@ -96,9 +132,14 @@
                   <img src="asset/img_avatar.png" />
                 </div>
                 <div class="card-content user-info">
-                  <p id="username">Username:</p>
-                  <br />
-                  <p id="selected-city">City:</p>
+                  <div class="row">
+                    <h7 class="col s3" style="font-weight: bold">Username:</h7>
+                    <p class="col s6" id="username"></p>
+                  </div>
+                  <div class="row">
+                    <h7 class="col s3" style="font-weight: bold">City:</h7>
+                    <p class="col s6" id="selected-city"></p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -182,29 +223,7 @@
                       >
                     </div>
                   </div>
-                  <div class="collection">
-                    <a
-                      href="#!"
-                      class="collection-item"
-                      id="1"
-                      onclick="reply_click(this.id)"
-                      >Alvin</a
-                    >
-                    <a
-                      href="#!"
-                      class="collection-item"
-                      id="2"
-                      onclick="reply_click(this.id)"
-                      >Alvin</a
-                    >
-                    <a
-                      href="#!"
-                      class="collection-item"
-                      id="3"
-                      onclick="reply_click(this.id)"
-                      >Alvin</a
-                    >
-                  </div>
+                  <div class="collection" id="city-container"></div>
                 </div>
               </li>
             </ul>
