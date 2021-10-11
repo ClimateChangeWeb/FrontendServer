@@ -529,7 +529,7 @@ main {
 /* weather card */
 #weather_wrapper {
   width: 400px;
-  margin-left: 20%;
+  margin-left: 10%;
 }
 .weatherCard {
   width: 400px;
@@ -570,7 +570,7 @@ main {
   text-align: center;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   display: block;
 }
 /* .conditions {
@@ -619,4 +619,7 @@ main {
   left: -3px;
   top: 6px;
   position: absolute;
+}
+.collapsible-body {
+  background-color: #23a6d5;
 }

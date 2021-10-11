@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const path = require('path');
+const cityModel = require('./models/city');
 const signupFunc = require('./controllers/signup');
 const editUser = require('./controllers/edit-user');
 const { ensureLoggedOut, ensureLoggedIn } = require('connect-ensure-login');
@@ -96,6 +97,37 @@ router.get('/user', (req, res) => res.send({ user: req.user }));
 //edit user
 router.patch('/user', ensureLoggedIn(), editUser);
 
+// get all city info
+router.get('/city', (req, res, next) => {
+  const cityName = req.query.cityName;
+
+  cityModel.find(
+    { cityName: { $regex: cityName, $options: 'i' } },
+    function (err, docs) {
+      if (err) {
+        console.log(err);
+        return next(err);
+      } else {
+        // console.log(docs);
+        res.json(docs);
+      }
+    },
+  );
+});
+
+// get one city info
+router.get('/city/:cityId', (req, res, next) => {
+  cityModel.findOne({ id: req.params.cityId }, function (err, doc) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    } else {
+      // console.log(doc);
+      res.json(doc);
+    }
+  });
+});
+
 // get discover news
 const discoverURL =
   'https://us-south.functions.appdomain.cloud/api/v1/web/21aa5286-66d7-41a8-b547-3e067029a6bc/default/getDicoverNews';
@@ -132,11 +164,11 @@ router.get('/warnings', (req, res) => {
 
 // get the weather url
 const weatherURL =
-  'https://climate-change-backend.us-south.cf.appdomain.cloud/weatherForecast';
+  'https://climate-change-backend.us-south.cf.appdomain.cloud/weather?cityId=';
 router.get('/weather', (req, res) => {
   //TODO: get the city from frontend for the weather.
   axios
-    .get(weatherURL)
+    .get(weatherURL + req.query.cityId)
     .then(function (response) {
       // handle success
       console.log(response.data);
@@ -175,7 +207,7 @@ router.get('/charity', (req, res) => {
 });
 
 // charity page
-router.get('/private/:username', (req, res) => {
+router.get('/private', ensureLoggedIn(), (req, res) => {
   //console.log(req.params);
   res.sendFile(path.join(__dirname, '/views/private.html'));
 });

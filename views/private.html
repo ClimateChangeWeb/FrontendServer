@@ -43,13 +43,9 @@
       sizes="16x16"
       href="./favicon//favicon-16x16.png"
     />
-    <link rel="manifest" href="../favicon//site.webmanifest" />
-    <script src="../js/private.js"></script>
-    <link
-      href="../css/private.css"
-      rel="stylesheet"
-      media="screen,projection"
-    />
+    <link rel="manifest" href="./favicon//site.webmanifest" />
+    <script src="js/private.js"></script>
+    <link href="css/private.css" rel="stylesheet" media="screen,projection" />
   </head>
   <body>
     <nav class="blue accent-1">
@@ -73,34 +69,167 @@
       <li><a href="#">Donation</a></li>
       <li><a href="/admin">Admin Login</a></li>
     </ul>
-    <main></main>
 
-    <footer class="page-footer blue accent-1">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Climate Change Website</h5>
-            <p class="grey-text text-lighten-4">
-              This Project is produced for my learning
-            </p>
+    <main>
+      <div class="row loader">
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
           </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-yellow">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+          <div class="spinner-layer spinner-green">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row user user-card">
+        <div class="col l4 offset-l1 s12 m5 user-profile">
+          <div class="row">
+            <div class="col s12 m10 offset-m1">
+              <div class="card">
+                <div class="card-image">
+                  <img src="asset/img_avatar.png" />
+                </div>
+                <div class="card-content user-info">
+                  <div class="row">
+                    <h7 class="col s3" style="font-weight: bold">Username:</h7>
+                    <p class="col s6" id="username"></p>
+                  </div>
+                  <div class="row">
+                    <h7 class="col s3" style="font-weight: bold">City:</h7>
+                    <p class="col s6" id="selected-city"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col l6 s12 m7 edit-field">
+          <div class="setting-container">
+            <ul class="collapsible">
               <li>
-                <a class="grey-text text-lighten-3" href="#!">About Me</a>
+                <div class="collapsible-header">
+                  <i class="material-icons">people</i>Change Username
+                </div>
+                <div class="collapsible-body">
+                  <div class="row">
+                    <div class="input-field col s10">
+                      <input
+                        placeholder="Placeholder"
+                        id="change-username-input"
+                        type="text"
+                        class="validate"
+                        disabled
+                      />
+                    </div>
+                    <div class="col s2" style="margin-top: 20px">
+                      <a id="enable-edit">
+                        <i class="material-icons">edit</i></a
+                      >
+                    </div>
+                  </div>
+                  <a
+                    class="waves-effect waves-light btn"
+                    id="change-username-btn"
+                    >submit</a
+                  >
+                </div>
               </li>
-              <li><a class="grey-text text-lighten-3" href="#!">Email</a></li>
               <li>
-                <a class="grey-text text-lighten-3" href="#!">Special thanks</a>
+                <div class="collapsible-header">
+                  <i class="material-icons">security</i>Change Password
+                </div>
+                <div class="collapsible-body">
+                  <div class="row">
+                    <input id="old-password" type="password" class="validate" />
+                    <label for="password">Old Password</label>
+                  </div>
+                  <div class="row">
+                    <input id="new-password" type="password" class="validate" />
+                    <label for="password">New Password</label>
+                  </div>
+                  <div class="row">
+                    <input
+                      id="new-password-confirm"
+                      type="password"
+                      class="validate"
+                    />
+                    <label for="password">Confirm New Password</label>
+                  </div>
+
+                  <div class="row">
+                    <a
+                      class="waves-effect waves-light btn"
+                      id="change-password-btn"
+                      >submit</a
+                    >
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  <i class="material-icons">location_on</i>location
+                </div>
+                <div class="collapsible-body">
+                  <div class="row">
+                    <div class="col s10">
+                      <input id="input-city" type="text" class="validate" />
+                      <label for="city">Input city name</label>
+                    </div>
+                    <div class="col s2" style="margin-top: 20px">
+                      <a id="city-search-btn">
+                        <i class="material-icons">search</i></a
+                      >
+                    </div>
+                  </div>
+                  <div class="collection" id="city-container"></div>
+                </div>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer-copyright">
-        <div class="container">© 2021 Copyright</div>
-      </div>
-    </footer>
+    </main>
   </body>
 </html>
