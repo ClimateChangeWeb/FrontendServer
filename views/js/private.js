@@ -7,6 +7,7 @@ $(document).ready(function () {
     function (data, textStatus, jqXHR) {
       console.log(data);
       $('#username').html(data.user.username);
+      $('#change-email-input').val(data.user.email);
       if (data.user.city) {
         $('#selected-city').html(data.user.city);
       } else {
@@ -15,6 +16,38 @@ $(document).ready(function () {
     },
   );
 
+  // change username
+  $('#change-email-btn').click(() => {
+    const newEmail = $('#change-email-input').val();
+    console.log(`new username is ${newEmail}`);
+    if ($('#change-email-input').hasClass('valid')) {
+      $.ajax({
+        type: 'PATCH',
+        url: '/user',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          username: $('#username').html(),
+          email: newEmail,
+        }),
+        statusCode: {
+          500: function () {
+            console.log('500');
+            alert(
+              'There has some development error please contract website admin',
+            );
+          },
+        },
+        success: function (data, textStatus, jqXHR) {
+          console.log(data);
+          location.reload();
+        },
+      });
+    } else {
+      console.log('false');
+    }
+  });
+
+  // search for cities based on user's selection
   $('#city-search-btn').click(() => {
     const userInput = $('#input-city').val();
     $('.loader').css('visibility', 'visible');
@@ -38,6 +71,13 @@ $(document).ready(function () {
         $('.loader').css('visibility', 'hidden');
       },
     });
+  });
+  $('#enable-edit').click(() => {
+    if ($('#change-email-input').attr('disabled')) {
+      $('#change-email-input').prop('disabled', false);
+    } else {
+      $('#change-email-input').prop('disabled', true);
+    }
   });
 });
 
