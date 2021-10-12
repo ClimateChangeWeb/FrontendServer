@@ -347,7 +347,8 @@ const mapWarnings = (warnings) => {
         `  <ul class="custom-list">
         <li class="warning-content">
           <i class="material-icons tiny">warning</i>
-          ${element.title}
+          <a href="${element.link}" target="_blank" rel="noreferrer noopener">${element.title}
+          <i class="material-icons tiny">open_in_new</i></a>
         </li>
       </ul>`,
       );
