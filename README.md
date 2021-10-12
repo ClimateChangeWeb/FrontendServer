@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/ClimateChangeWeb/FrontendServer/graphs/contributors" alt="Contributors">
-        <img src="	https://img.shields.io/github/contributors/ClimateChangeWeb/FrontendServer" /></a>
+        <img src="https://img.shields.io/github/contributors/ClimateChangeWeb/FrontendServer" /></a>
 
    <a href="https://github.com/ClimateChangeWeb/FrontendServer/issues" alt="Issues">
         <img src="https://img.shields.io/github/issues/ClimateChangeWeb/FrontendServer" /></a>
