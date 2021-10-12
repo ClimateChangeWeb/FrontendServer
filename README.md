@@ -20,7 +20,7 @@
 
 # Introduction
 
-This is the front end for the Climate Changes web application.Through here, you can learn about how Climate Change is affecting our planet and find out more about the charities and organizations that work to curb its influence. The Discover page holds a large amount of information including the current climate news, the daily weather warnings for Australia, and a weather forecast.
+This is the front end for the Climate Changes web application. Through here, you can learn about how Climate Change is affecting our planet and find out more about the charities and organizations that work to curb its influence. The Discover page holds a large amount of information including the current climate news, the daily weather warnings for Australia, and a weather forecast.
 
 # Installation
 
